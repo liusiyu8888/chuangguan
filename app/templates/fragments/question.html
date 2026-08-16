@@ -1,0 +1,29 @@
+{% from "fragments/_macros.html" import progress_dots %}
+
+{{ progress_dots(question_index, questions_per_level) }}
+
+<div class="tech-card rounded-2xl p-6 panel-in">
+  <div class="flex items-center justify-between mb-4">
+    <span class="badge-cyber text-xs font-medium px-3 py-1 rounded-full">第 {{ question_index }} / {{ questions_per_level }} 题</span>
+    <span class="text-xs text-slate-500">请选择一个答案</span>
+  </div>
+
+  <h2 class="text-lg font-bold leading-relaxed mb-6 text-slate-100">{{ question.text }}</h2>
+
+  <div class="space-y-3">
+    {% for letter, option in [("A", question.option_a), ("B", question.option_b), ("C", question.option_c), ("D", question.option_d)] %}
+    {% if option %}
+    <button
+      class="option-btn w-full text-left flex items-center gap-3 border rounded-xl px-4 py-3 group"
+      hx-post="/answer"
+      hx-vals='{"question_id": {{ question.id }}, "selected": "{{ letter }}"}'
+      hx-indicator="#loading">
+      <span class="option-letter w-8 h-8 shrink-0 flex items-center justify-center rounded-full bg-slate-700/60 text-slate-300 font-bold transition">{{ letter }}</span>
+      <span class="text-slate-300">{{ option }}</span>
+    </button>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  <div id="loading" class="htmx-indicator text-center text-cyan-400 text-sm mt-4">判定中…</div>
+</div>

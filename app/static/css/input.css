@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================= 科技感主题：深空霓虹 ================= */
+
+/* 深色星空底色 + 星云光晕 */
+body {
+  background-color: #050816;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 15% 0%, rgba(56, 189, 248, 0.14), transparent),
+    radial-gradient(ellipse 50% 35% at 85% 15%, rgba(217, 70, 239, 0.12), transparent),
+    radial-gradient(ellipse 70% 45% at 50% 110%, rgba(16, 185, 129, 0.10), transparent);
+  background-attachment: fixed;
+}
+
+/* 闪烁的星星层 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 28% 64%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 41% 12%, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 55% 78%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 68% 34%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 81% 88%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 90% 45%, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 74% 8%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 7% 86%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 46% 40%, rgba(255, 255, 255, 0.5), transparent);
+  background-repeat: repeat;
+  background-size: 260px 260px;
+  animation: twinkle 5s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+/* 网格线层 */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+/* 霓虹流光标题 */
+.neon-title {
+  background: linear-gradient(90deg, #22d3ee, #e879f9, #34d399, #22d3ee);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 6s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(34, 211, 238, 0.45)) drop-shadow(0 0 30px rgba(232, 121, 249, 0.25));
+}
+
+@keyframes shine {
+  to { background-position: 250% center; }
+}
+
+/* 深色玻璃卡片 + 霓虹描边 */
+.tech-card {
+  background: rgba(10, 16, 36, 0.72);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow:
+    0 0 28px rgba(34, 211, 238, 0.10),
+    inset 0 0 24px rgba(56, 189, 248, 0.05);
+}
+
+/* 霓虹渐变按钮 */
+.btn-neon {
+  background: linear-gradient(90deg, #06b6d4, #8b5cf6, #ec4899);
+  background-size: 220% auto;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 22px rgba(139, 92, 246, 0.35);
+}
+.btn-neon:hover {
+  background-position: right center;
+  transform: translateY(-1px);
+  box-shadow: 0 0 34px rgba(34, 211, 238, 0.5);
+}
+
+/* 幽灵描边按钮 */
+.btn-ghost {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #7dd3fc;
+  transition: all 0.25s ease;
+}
+.btn-ghost:hover {
+  border-color: rgba(34, 211, 238, 0.9);
+  color: #22d3ee;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
+}
+
+/* 进度点：未激活 */
+.dot-idle {
+  background: rgba(100, 116, 139, 0.35);
+  box-shadow: none;
+}
+/* 进度点：已答对（霓虹发光） */
+.dot-active {
+  background: #22d3ee;
+  box-shadow: 0 0 10px #22d3ee, 0 0 22px rgba(34, 211, 238, 0.55);
+  animation: dot-pulse 1.6s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  50% { box-shadow: 0 0 16px #22d3ee, 0 0 34px rgba(34, 211, 238, 0.8); }
+}
+
+/* 选项按钮 */
+.option-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(100, 116, 139, 0.3);
+  transition: all 0.2s ease;
+}
+.option-btn:hover {
+  border-color: rgba(34, 211, 238, 0.8);
+  background: rgba(8, 51, 68, 0.55);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
+}
+.option-btn:hover .option-letter {
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+}
+
+/* 徽章 */
+.badge-cyber {
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  color: #67e8f9;
+  background: rgba(8, 51, 68, 0.5);
+  text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+}
+
+/* 正确反馈：青色霓虹 */
+.panel-correct {
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  background: rgba(6, 30, 24, 0.72);
+  box-shadow: 0 0 26px rgba(52, 211, 153, 0.18), inset 0 0 22px rgba(52, 211, 153, 0.06);
+}
+.text-glow-correct {
+  color: #34d399;
+  text-shadow: 0 0 12px rgba(52, 211, 153, 0.65);
+}
+
+/* 错误反馈：玫红霓虹告警 + 抖动 */
+.panel-wrong {
+  border: 1px solid rgba(244, 63, 94, 0.55);
+  background: rgba(38, 10, 20, 0.72);
+  box-shadow: 0 0 26px rgba(244, 63, 94, 0.22), inset 0 0 22px rgba(244, 63, 94, 0.07);
+  animation: shake 0.4s ease;
+}
+.text-glow-wrong {
+  color: #fb7185;
+  text-shadow: 0 0 12px rgba(244, 63, 94, 0.65);
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-3px); }
+}
+
+/* 过关 / 大满贯：金色霓虹 */
+.panel-clear {
+  border: 1px solid rgba(251, 191, 36, 0.5);
+  background: rgba(38, 28, 6, 0.72);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.2), inset 0 0 24px rgba(251, 191, 36, 0.07);
+}
+.text-glow-clear {
+  color: #fbbf24;
+  text-shadow: 0 0 14px rgba(251, 191, 36, 0.7);
+}
+.text-glow-clear-big {
+  color: transparent;
+  background: linear-gradient(90deg, #fbbf24, #f472b6, #22d3ee, #fbbf24);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.45));
+}
+
+/* 入场动画 */
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.panel-in {
+  animation: panel-in 0.45s ease;
+}
+
+/* 解析块 */
+.explain-box {
+  background: rgba(15, 23, 42, 0.6);
+  border-left: 3px solid rgba(56, 189, 248, 0.6);
+  color: #94a3b8;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.35); border-radius: 4px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }

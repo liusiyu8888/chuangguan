@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}第 {{ current_level }} 关 · 百科知识大闯关{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-8">
+  <!-- 顶部：关卡信息 + 退出 -->
+  <div class="flex items-center justify-between mb-6">
+    <a href="/" class="text-slate-500 hover:text-cyan-300 text-sm flex items-center gap-1 transition">
+      <span>←</span> 退出闯关
+    </a>
+    <div class="text-center">
+      <div class="text-2xl font-extrabold neon-title">第 {{ current_level }} 关</div>
+      <div class="text-xs text-slate-500 tracking-widest">共 {{ total_levels }} 关</div>
+    </div>
+    <div class="w-16"></div>
+  </div>
+
+  <!-- 题目区：HTMX 就地替换（含进度点与题目卡片） -->
+  <div id="question-area" hx-target="#question-area" hx-swap="innerHTML">
+    {% include "fragments/question.html" %}
+  </div>
+</div>
+{% endblock %}

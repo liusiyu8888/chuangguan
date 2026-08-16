@@ -1,0 +1,31 @@
+{% from "fragments/_macros.html" import progress_dots %}
+
+{{ progress_dots(question_index, questions_per_level) }}
+
+<div class="panel-correct rounded-2xl p-6 panel-in">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="text-4xl">✅</span>
+    <div>
+      <div class="text-xl font-extrabold text-glow-correct">回答正确！</div>
+      <div class="text-sm text-slate-400">本关已连续答对 {{ progress.current_correct }} 题</div>
+    </div>
+  </div>
+
+  {% if question.explanation %}
+  <div class="explain-box rounded-xl p-4 mb-6 text-sm">
+    <span class="font-semibold text-emerald-400">📖 解析：</span>{{ question.explanation }}
+  </div>
+  {% endif %}
+
+  <div class="flex gap-3">
+    <button
+      class="btn-neon flex-1 text-white font-bold rounded-xl py-3"
+      hx-get="/question"
+      hx-target="#question-area"
+      hx-swap="innerHTML">
+      下一题 →
+    </button>
+    <a href="/" class="px-4 py-3 text-slate-500 hover:text-cyan-300 text-sm flex items-center transition">退出</a>
+  </div>
+</div>
+<script>if (window.playSfx) playSfx("correct");</script>
