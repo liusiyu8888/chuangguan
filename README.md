@@ -28,6 +28,21 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 > 提示：首次启动自动建表并写入内置题库。改 schema 后删除根目录 `app.db` 再启动即可重建。
 
+## 部署到外网（Render，免费）
+
+项目已内置 `render.yaml`（Blueprint 部署配置），把仓库推到 GitHub 后即可一键部署：
+
+1. 将本仓库推送到 GitHub（`git remote add origin <你的仓库地址> && git push -u origin main`）
+2. 打开 [Render 控制台](https://dashboard.render.com) 注册（支持 GitHub 账号直接登录）
+3. **New +** → **Blueprint** → 选择你的 GitHub 仓库 → Render 会自动读取 `render.yaml`
+4. 确认配置后点 **Apply**，等待 2~5 分钟构建完成
+5. 完成后访问平台生成的公网地址（形如 `https://baike-quiz.onrender.com`），手机 / 电脑 / 任意设备都能打开
+
+> 注意事项：
+> - 免费实例休眠：Render 免费实例闲置 15 分钟会休眠，首次访问需等约 30 秒唤醒，属正常现象
+> - 进度数据：免费实例文件系统是临时的，实例重建 / 休眠重启后闯关进度可能重置（代码与题库不受影响）。如需进度永久保存，可在 Render 控制台挂载持久磁盘或改用付费实例
+> - 国内访问：免费节点可选 `singapore`（render.yaml 已配置），比美国节点更快
+
 ## 关卡结构
 
 - 题库 200 题，每关 5 题 → 40 关，每关恰好 5 题

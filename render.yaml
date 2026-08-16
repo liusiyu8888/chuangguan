@@ -1,0 +1,19 @@
+# Render Blueprint 部署配置（免费 Web Service）
+# 用法：把本仓库推送到 GitHub 后，在 Render 控制台选择
+#   "New +" → "Blueprint" → 关联 GitHub 仓库 → 勾选本文件即可自动部署
+# 部署后 Render 会生成形如 https://xxx.onrender.com 的公网地址
+
+services:
+  - type: web
+    name: baike-quiz
+    runtime: python
+    plan: free
+    region: singapore # 亚太节点，国内访问相对更稳
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: PYTHONUNBUFFERED
+        value: "1"
