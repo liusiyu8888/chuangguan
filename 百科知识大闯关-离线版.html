@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>百科知识大闯关 · 离线版</title>
+<style>
+  :root{
+    --bg:#050816; --panel:rgba(15,23,42,.72); --line:rgba(34,211,238,.28);
+    --cyan:#22d3ee; --violet:#a78bfa; --pink:#f472b6; --green:#34d399; --red:#fb7185;
+    --text:#e2e8f0; --dim:#94a3b8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(34,211,238,.15), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 0%, rgba(167,139,250,.16), transparent),
+      linear-gradient(rgba(34,211,238,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,211,238,.05) 1px, transparent 1px);
+    background-size:auto,auto,42px 42px,42px 42px;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:24px 16px 60px}
+  .hidden{display:none!important}
+  .glow-title{
+    font-size:42px;font-weight:900;letter-spacing:3px;text-align:center;
+    background:linear-gradient(90deg,#22d3ee,#a78bfa,#f472b6,#22d3ee);
+    background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shine 6s linear infinite;text-shadow:0 0 40px rgba(34,211,238,.35);
+  }
+  @keyframes shine{to{background-position:250% 0}}
+  .sub{text-align:center;color:var(--dim);letter-spacing:6px;margin:8px 0 26px;font-size:14px}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:22px;margin-bottom:16px;backdrop-filter:blur(8px);
+    box-shadow:0 0 24px rgba(34,211,238,.08), inset 0 0 30px rgba(34,211,238,.03);
+  }
+  .btn{
+    display:block;width:100%;padding:15px;border-radius:12px;border:1px solid transparent;
+    font-size:16px;font-weight:700;cursor:pointer;color:#fff;letter-spacing:2px;
+    background:linear-gradient(90deg,#0891b2,#7c3aed);transition:.18s;text-align:center;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(124,58,237,.4)}
+  .btn:active{transform:translateY(0)}
+  .btn-ghost{
+    background:transparent;border:1px solid var(--line);color:var(--cyan);
+  }
+  .btn-ghost:hover{background:rgba(34,211,238,.08);box-shadow:0 0 18px rgba(34,211,238,.2)}
+  .btn-danger{background:transparent;border:1px solid rgba(251,113,133,.5);color:var(--red);font-weight:600}
+  .btn-danger:hover{background:rgba(251,113,133,.1);box-shadow:none}
+  .row{display:flex;gap:12px}
+  .row .btn{flex:1}
+  .stat{display:flex;justify-content:space-between;font-size:14px;color:var(--dim);margin-bottom:10px}
+  .stat b{color:var(--cyan);font-size:18px}
+  .bar{height:8px;border-radius:99px;background:rgba(148,163,184,.15);overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22d3ee,#a78bfa);transition:width .4s}
+  .q-tag{display:inline-block;font-size:12px;color:var(--cyan);border:1px solid var(--line);border-radius:99px;padding:3px 12px;margin-bottom:14px;letter-spacing:2px}
+  .q-text{font-size:19px;line-height:1.7;font-weight:600;margin-bottom:20px}
+  .opt{
+    display:block;width:100%;text-align:left;padding:14px 16px;margin-bottom:12px;border-radius:12px;
+    background:rgba(30,41,59,.6);border:1px solid rgba(148,163,184,.18);color:var(--text);
+    font-size:15px;cursor:pointer;transition:.15s;line-height:1.6;
+  }
+  .opt:hover:not(:disabled){border-color:var(--cyan);background:rgba(34,211,238,.08)}
+  .opt .key{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:8px;background:rgba(34,211,238,.12);color:var(--cyan);font-weight:800;margin-right:10px;font-size:13px}
+  .opt.correct{background:rgba(52,211,153,.18);border-color:var(--green);color:#a7f3d0}
+  .opt.wrong{background:rgba(251,113,133,.15);border-color:var(--red);color:#fecdd3}
+  .opt:disabled{cursor:default;opacity:.85}
+  .msg{padding:12px 16px;border-radius:10px;margin-top:6px;font-size:14px;font-weight:700;letter-spacing:1px}
+  .msg.ok{background:rgba(52,211,153,.12);color:#6ee7b7;border:1px solid rgba(52,211,153,.35)}
+  .msg.err{background:rgba(251,113,133,.12);color:#fda4af;border:1px solid rgba(251,113,133,.35)}
+  .msg.info{background:rgba(34,211,238,.1);color:#67e8f9;border:1px solid rgba(34,211,238,.3)}
+  .win-box{text-align:center;padding:28px 10px}
+  .win-emoji{font-size:64px;animation:pop .5s ease}
+  @keyframes pop{0%{transform:scale(.3);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+  .win-title{font-size:30px;font-weight:900;margin:14px 0 6px;background:linear-gradient(90deg,#34d399,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .win-sub{color:var(--dim);font-size:15px;margin-bottom:22px}
+  .learn-item{margin-bottom:14px}
+  .learn-q{font-size:16px;font-weight:600;line-height:1.6;margin-bottom:10px}
+  .learn-ans{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.3);font-size:14px;line-height:1.7}
+  .learn-ans.show{display:block}
+  .learn-ans b{color:#6ee7b7}
+  .foot{text-align:center;color:var(--dim);font-size:12px;margin-top:26px;letter-spacing:1px}
+  .pick{width:100%;padding:12px 14px;border-radius:10px;background:rgba(30,41,59,.6);border:1px solid var(--line);color:var(--text);font-size:15px;margin-bottom:14px}
+  .pick:focus{outline:none;border-color:var(--cyan)}
+  h2.sec{font-size:20px;font-weight:800;letter-spacing:2px;margin-bottom:14px;color:var(--cyan)}
+  .back{margin-bottom:18px}
+  .rules li{margin:8px 0;color:var(--dim);font-size:14px;line-height:1.8}
+  .rules li b{color:var(--text)}
+  .rules{padding-left:2px;list-style:none}
+  .rules li::before{content:"▸ ";color:var(--violet)}
+  .lvl-chip{display:inline-block;background:rgba(167,139,250,.12);color:#c4b5fd;border:1px solid rgba(167,139,250,.35);border-radius:99px;padding:2px 10px;font-size:12px;margin-right:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ========== 首页 ========== -->
+  <div id="view-home">
+    <h1 class="glow-title">百科知识大闯关</h1>
+    <div class="sub">AI × 百科 · 40 关知识挑战</div>
+    <div class="card">
+      <div class="stat"><span>已通关</span><b id="stat-clear">0</b></div>
+      <div class="stat"><span>可挑战</span><b id="stat-next">第 1 关</b></div>
+      <div class="bar"><i id="stat-bar" style="width:0%"></i></div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <button class="btn" onclick="startGame()">🚀 开始闯关</button>
+        <button class="btn btn-ghost" onclick="showLearn()">📖 学习模式</button>
+      </div>
+      <div style="height:10px"></div>
+      <label style="font-size:13px;color:var(--dim);letter-spacing:1px">选择关卡（已解锁范围内）：</label>
+      <select id="pick-level" class="pick" onchange="startGame(parseInt(this.value))"></select>
+      <button class="btn btn-danger" onclick="resetProgress()">🔄 重置进度</button>
+    </div>
+    <div class="card rules">
+      <h2 class="sec" style="margin-bottom:6px">玩法规则</h2>
+      <ul>
+        <li>共 <b>40 关</b>，每关 <b>5 道题</b></li>
+        <li>5 题<b>全部答对</b>才能进入下一关</li>
+        <li>答错会提示正确答案，并<b>重新挑战本关</b></li>
+        <li>进度自动保存在本机浏览器，关闭后不丢失</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ========== 闯关页 ========== -->
+  <div id="view-play" class="hidden">
+    <div class="card">
+      <div class="stat">
+        <span>第 <b id="play-level">1</b> 关</span>
+        <span id="play-count">第 1 / 5 题</span>
+      </div>
+      <div class="bar"><i id="play-bar" style="width:20%"></i></div>
+    </div>
+    <div class="card" id="play-card">
+      <div class="q-tag" id="play-tag">挑战</div>
+      <div class="q-text" id="play-q"></div>
+      <div id="play-opts"></div>
+      <div id="play-msg"></div>
+    </div>
+    <div class="card hidden" id="play-win">
+      <div class="win-box">
+        <div class="win-emoji">🏆</div>
+        <div class="win-title" id="win-title">全对！闯关成功</div>
+        <div class="win-sub" id="win-sub">即将进入下一关</div>
+        <div class="row">
+          <button class="btn" id="win-next-btn" onclick="nextLevel()">进入下一关 →</button>
+          <button class="btn btn-ghost" onclick="showHome()">返回首页</button>
+        </div>
+      </div>
+    </div>
+    <div class="card hidden" id="play-final">
+      <div class="win-box">
+        <div class="win-emoji">🎓</div>
+        <div class="win-title">恭喜通关全部 40 关！</div>
+        <div class="win-sub">你就是百科知识大王 🏅</div>
+        <button class="btn" onclick="showHome()">返回首页</button>
+      </div>
+    </div>
+    <button class="btn btn-ghost back" onclick="showHome()">← 返回首页</button>
+  </div>
+
+  <!-- ========== 学习模式 ========== -->
+  <div id="view-learn" class="hidden">
+    <button class="btn btn-ghost back" onclick="showHome()">← 返回首页</button>
+    <h2 class="sec">📖 学习模式 · 浏览全部题目</h2>
+    <div class="card">
+      <label style="font-size:13px;color:var(--dim);letter-spacing:1px">按关卡筛选：</label>
+      <select id="learn-filter" class="pick" onchange="renderLearn()">
+        <option value="0">全部题目（200 题）</option>
+      </select>
+      <div id="learn-list"></div>
+    </div>
+  </div>
+
+  <div class="foot">百科知识大闯关 · 离线版（单文件，双击即玩）</div>
+</div>
+
+<script>
+/* ================= 题库数据（构建时自动嵌入 200 题） ================= */
+const QUESTIONS = [{"level": 1, "text": "人工智能的英文缩写是？", "option_a": "PC", "option_b": "AI", "option_c": "iPad", "option_d": "", "answer": "B", "explanation": ""}, {"level": 1, "text": "豆包、智能对话机器人属于什么类型工具？", "option_a": "人工智能", "option_b": "办公软件", "option_c": "游戏软件", "option_d": "", "answer": "A", "explanation": ""}, {"level": 1, "text": "我们给AI下达任务、描述需求的文字统称？", "option_a": "提示词", "option_b": "代码", "option_c": "口令", "option_d": "", "answer": "A", "explanation": ""}, {"level": 1, "text": "AI本身是否具备真实的人类情感？", "option_a": "有喜怒哀乐", "option_b": "没有，仅模拟表达", "option_c": "只有开心情绪", "option_d": "", "answer": "B", "explanation": ""}, {"level": 1, "text": "想要AI生成专属绘画作品，我们需要？", "option_a": "详细文字描述画面", "option_b": "发送隐私信息", "option_c": "随意输入符号", "option_d": "", "answer": "A", "explanation": ""}, {"level": 2, "text": "小学生使用AI完成作业的正确方式是？", "option_a": "抄全部答案", "option_b": "参考思路独立完成", "option_c": "让AI代考", "option_d": "", "answer": "B", "explanation": ""}, {"level": 2, "text": "以下不属于AI产品的是？", "option_a": "智能音箱", "option_b": "纸质笔记本", "option_c": "人脸识别门锁", "option_d": "", "answer": "B", "explanation": ""}, {"level": 2, "text": "和AI互动时，绝对不能发送的是？", "option_a": "学习问题", "option_b": "家庭住址、身份证号", "option_c": "作文需求", "option_d": "", "answer": "B", "explanation": ""}, {"level": 2, "text": "AI学习和积累知识的核心依靠是？", "option_a": "海量数据+算法", "option_b": "自主观察世界", "option_c": "人类大脑记忆", "option_d": "", "answer": "A", "explanation": ""}, {"level": 2, "text": "手机人脸解锁、人脸打卡运用的核心技术是？", "option_a": "AI图像识别", "option_b": "放大镜成像", "option_c": "手动对比", "option_d": "", "answer": "A", "explanation": ""}, {"level": 3, "text": "关于AI生成图片，说法正确的是？", "option_a": "场景不一定真实存在", "option_b": "都是实拍照片", "option_c": "可直接作为科学证据", "option_d": "", "answer": "A", "explanation": ""}, {"level": 3, "text": "如何提问能让AI给出最准确的答案？", "option_a": "清晰完整描述问题", "option_b": "只发单个字", "option_c": "输入乱码", "option_d": "", "answer": "A", "explanation": ""}, {"level": 3, "text": "下列哪项是AI无法做到的？", "option_a": "写小故事", "option_b": "解答科普问题", "option_c": "凭空制造实物玩具", "option_d": "", "answer": "C", "explanation": ""}, {"level": 3, "text": "面对AI给出的答案，我们应该？", "option_a": "全盘相信", "option_b": "辨别对错、理性参考", "option_c": "直接转发", "option_d": "", "answer": "B", "explanation": ""}, {"level": 3, "text": "适合借助AI完成的学习任务是？", "option_a": "构思作文提纲", "option_b": "代替期末考试", "option_c": "抄写作业答案", "option_d": "", "answer": "A", "explanation": ""}, {"level": 4, "text": "AI程序运行必须依托的设备是？", "option_a": "电子设备（手机/电脑）", "option_b": "纸质书本", "option_c": "文具", "option_d": "", "answer": "A", "explanation": ""}, {"level": 4, "text": "主流AI机器人最擅长识别的人类语言是？", "option_a": "普通话", "option_b": "动物语言", "option_c": "无声手势", "option_d": "", "answer": "A", "explanation": ""}, {"level": 4, "text": "使用AI的文明行为是？", "option_a": "请教学习难题", "option_b": "生成暴力内容", "option_c": "恶意骚扰AI", "option_d": "", "answer": "A", "explanation": ""}, {"level": 4, "text": "AI绘画的核心功能是？", "option_a": "根据文字生成图画", "option_b": "手动手绘图片", "option_c": "冲洗照片", "option_d": "", "answer": "A", "explanation": ""}, {"level": 4, "text": "关于AI对话记录，说法正确的是？", "option_a": "可能被留存，禁止发隐私", "option_b": "会立刻自动消失", "option_c": "所有人都能看见", "option_d": "", "answer": "A", "explanation": ""}, {"level": 5, "text": "手机导航自动规划最优路线，运用了？", "option_a": "AI智能算法", "option_b": "随机猜测", "option_c": "人工记忆", "option_d": "", "answer": "A", "explanation": ""}, {"level": 5, "text": "发现AI答案明显错误时，应该？", "option_a": "直接采信", "option_b": "查阅资料核实", "option_c": "传播错误内容", "option_d": "", "answer": "B", "explanation": ""}, {"level": 5, "text": "以下不属于AI创作的是？", "option_a": "手写日记", "option_b": "AI写诗", "option_c": "AI编童话", "option_d": "", "answer": "A", "explanation": ""}, {"level": 5, "text": "能否让AI冒充家长和老师沟通？", "option_a": "不可以，属于不诚信行为", "option_b": "方便时可以", "option_c": "偶尔可以", "option_d": "", "answer": "A", "explanation": ""}, {"level": 5, "text": "AI的知识来源是？", "option_a": "整合已有数据", "option_b": "自主发明新知识", "option_c": "凭空创造", "option_d": "", "answer": "A", "explanation": ""}, {"level": 6, "text": "短视频平台自动推送喜欢的视频，依靠？", "option_a": "AI推荐技术", "option_b": "人工筛选", "option_c": "系统随机", "option_d": "", "answer": "A", "explanation": ""}, {"level": 6, "text": "让AI修改作文，效果最好的做法是？", "option_a": "明确修改要求", "option_b": "只发半篇作文", "option_c": "无要求直接发送", "option_d": "", "answer": "A", "explanation": ""}, {"level": 6, "text": "对待AI生成作文的正确做法是？", "option_a": "借鉴思路自主改写", "option_b": "一字不改直接上交", "option_c": "冒充原创发表", "option_d": "", "answer": "A", "explanation": ""}, {"level": 6, "text": "智能扫地机器人避障功能依靠？", "option_a": "AI感知识别", "option_b": "视觉眼睛", "option_c": "嗅觉探测", "option_d": "", "answer": "A", "explanation": ""}, {"level": 6, "text": "我们应该将AI定义为？", "option_a": "人类的学习辅助工具", "option_b": "完美无缺的智者", "option_c": "可以替代人类的存在", "option_d": "", "answer": "A", "explanation": ""}, {"level": 7, "text": "不适合借助AI学习的内容是？", "option_a": "不文明段子、恶作剧方法", "option_b": "词语解释", "option_c": "科学小知识", "option_d": "", "answer": "A", "explanation": ""}, {"level": 7, "text": "英文Prompt的中文通用名称是？", "option_a": "提示词", "option_b": "指令码", "option_c": "文件夹", "option_d": "", "answer": "A", "explanation": ""}, {"level": 7, "text": "AI模拟的情绪属于？", "option_a": "文字模仿，无真实感受", "option_b": "真实喜怒哀乐", "option_c": "自主情绪变化", "option_d": "", "answer": "A", "explanation": ""}, {"level": 7, "text": "纯手动直尺画图属于AI应用吗？", "option_a": "不属于", "option_b": "属于", "option_c": "部分属于", "option_d": "", "answer": "A", "explanation": ""}, {"level": 7, "text": "AI翻译的主要作用是？", "option_a": "辅助理解多国语言", "option_b": "结果绝对准确", "option_c": "替代语言学习", "option_d": "", "answer": "A", "explanation": ""}, {"level": 8, "text": "向AI请教习题的核心目的是？", "option_a": "弄懂解题思路", "option_b": "只抄最终答案", "option_c": "节省思考时间", "option_d": "", "answer": "A", "explanation": ""}, {"level": 8, "text": "AI识别图片中动物、植物的技术是？", "option_a": "图像识别", "option_b": "图像复印", "option_c": "图像放大", "option_d": "", "answer": "A", "explanation": ""}, {"level": 8, "text": "AI换脸视频最大的隐患是？", "option_a": "伪造画面，误导他人", "option_b": "画质模糊", "option_c": "播放卡顿", "option_d": "", "answer": "A", "explanation": ""}, {"level": 8, "text": "学习中对待AI的核心态度是？", "option_a": "辅助学习，不依赖", "option_b": "全程替代自己思考", "option_c": "完全拒绝使用", "option_d": "", "answer": "A", "explanation": ""}, {"level": 8, "text": "普通AI无法完成的行为是？", "option_a": "线下运动、上课", "option_b": "整理资料", "option_c": "解答问题", "option_d": "", "answer": "A", "explanation": ""}, {"level": 9, "text": "智能手表语音问答功能依托？", "option_a": "AI语音识别技术", "option_b": "手动输入", "option_c": "网络随机回复", "option_d": "", "answer": "A", "explanation": ""}, {"level": 9, "text": "创作小故事不需要给AI提供？", "option_a": "银行卡密码", "option_b": "故事主题", "option_c": "主角设定", "option_d": "", "answer": "A", "explanation": ""}, {"level": 9, "text": "AI编造虚假、不存在信息的现象被称为？", "option_a": "AI幻觉", "option_b": "AI出错", "option_c": "AI休眠", "option_d": "", "answer": "A", "explanation": ""}, {"level": 9, "text": "最规范的AI使用学习习惯是？", "option_a": "先思考，后求助", "option_b": "遇题直接找AI", "option_c": "完全不用AI", "option_d": "", "answer": "A", "explanation": ""}, {"level": 9, "text": "AI语音翻译可以实现的功能是？", "option_a": "中英文互转", "option_b": "听懂动物语言", "option_c": "改变语言天赋", "option_d": "", "answer": "A", "explanation": ""}, {"level": 10, "text": "考试期间使用AI答题属于什么行为？", "option_a": "作弊违规", "option_b": "正常学习", "option_c": "合理求助", "option_d": "", "answer": "A", "explanation": ""}, {"level": 10, "text": "关于AI生成内容的版权，说法正确的是？", "option_a": "不可随意冒充原创商用", "option_b": "生成即归个人所有", "option_c": "可随意发布售卖", "option_d": "", "answer": "A", "explanation": ""}, {"level": 10, "text": "交通摄像头识别违章车辆运用了？", "option_a": "AI图像识别", "option_b": "人工肉眼监控", "option_c": "高清放大", "option_d": "", "answer": "A", "explanation": ""}, {"level": 10, "text": "想要AI绘画效果更好，需要？", "option_a": "细化画面描述提示词", "option_b": "简化所有要求", "option_c": "不输入任何描述", "option_d": "", "answer": "A", "explanation": ""}, {"level": 10, "text": "AI区别于普通计算器的核心优势是？", "option_a": "能理解语言、完成多元任务", "option_b": "计算速度更快", "option_c": "只能做数学计算", "option_d": "", "answer": "A", "explanation": ""}, {"level": 11, "text": "禁止要求AI生成的内容是？", "option_a": "虚假谣言、暴力内容", "option_b": "手抄报素材", "option_c": "古诗赏析", "option_d": "", "answer": "A", "explanation": ""}, {"level": 11, "text": "AI技术进步的核心动力是？", "option_a": "人类持续研发更新", "option_b": "自主进化升级", "option_c": "网络自动更新", "option_d": "", "answer": "A", "explanation": ""}, {"level": 11, "text": "AI听不懂问题时，正确做法是？", "option_a": "重新清晰组织语言提问", "option_b": "重复刷屏发送", "option_c": "言语催促辱骂", "option_d": "", "answer": "A", "explanation": ""}, {"level": 11, "text": "AI绘画、AI写作属于哪类AI？", "option_a": "生成式AI", "option_b": "传统计算器AI", "option_c": "监控AI", "option_d": "", "answer": "A", "explanation": ""}, {"level": 11, "text": "使用AI学习最需要保留的能力是？", "option_a": "独立思考", "option_b": "完全依赖AI", "option_c": "放弃动脑", "option_d": "", "answer": "A", "explanation": ""}, {"level": 12, "text": "嘈杂环境会对AI语音识别造成什么影响？", "option_a": "准确率降低", "option_b": "准确率提升", "option_c": "无任何影响", "option_d": "", "answer": "A", "explanation": ""}, {"level": 12, "text": "大模型AI能够同时理解文字和图片，这种能力被称为？", "option_a": "多模态", "option_b": "单模态", "option_c": "无模态", "option_d": "", "answer": "A", "explanation": ""}, {"level": 12, "text": "使用AI生成图片后，正确的做法是？", "option_a": "注明由AI生成，不冒充原创", "option_b": "直接署上自己的名字", "option_c": "随意商用赚钱", "option_d": "", "answer": "A", "explanation": ""}, {"level": 12, "text": "AI机器人需要通过什么来学习和进步？", "option_a": "大量数据训练", "option_b": "自动进化", "option_c": "凭空出现", "option_d": "", "answer": "A", "explanation": ""}, {"level": 12, "text": "下列哪一项属于AI的合理应用？", "option_a": "帮助老人语音拨号", "option_b": "替人考试作弊", "option_c": "伪造新闻视频", "option_d": "", "answer": "A", "explanation": ""}, {"level": 13, "text": "地球围绕哪个天体公转？", "option_a": "月球", "option_b": "太阳", "option_c": "火星", "option_d": "", "answer": "B", "explanation": ""}, {"level": 13, "text": "下列属于哺乳动物的是？", "option_a": "鲸鱼", "option_b": "公鸡", "option_c": "鳄鱼", "option_d": "", "answer": "A", "explanation": ""}, {"level": 13, "text": "一年共有几个季节？", "option_a": "3个", "option_b": "4个", "option_c": "5个", "option_d": "", "answer": "B", "explanation": ""}, {"level": 13, "text": "标准大气压下，水结冰的温度是？", "option_a": "0℃", "option_b": "10℃", "option_c": "100℃", "option_d": "", "answer": "A", "explanation": ""}, {"level": 13, "text": "鸟类最核心的特征是拥有？", "option_a": "翅膀", "option_b": "羽毛", "option_c": "喙", "option_d": "", "answer": "B", "explanation": ""}, {"level": 14, "text": "太阳系中体积最大的行星是？", "option_a": "地球", "option_b": "木星", "option_c": "水星", "option_d": "", "answer": "B", "explanation": ""}, {"level": 14, "text": "“举头望明月，低头思故乡”的作者是？", "option_a": "李白", "option_b": "杜甫", "option_c": "白居易", "option_d": "", "answer": "A", "explanation": ""}, {"level": 14, "text": "昼夜交替现象的成因是？", "option_a": "地球自转", "option_b": "地球公转", "option_c": "月球转动", "option_d": "", "answer": "A", "explanation": ""}, {"level": 14, "text": "人体面积最大的器官是？", "option_a": "心脏", "option_b": "皮肤", "option_c": "大脑", "option_d": "", "answer": "B", "explanation": ""}, {"level": 14, "text": "下列属于可再生能源的是？", "option_a": "太阳能", "option_b": "煤炭", "option_c": "石油", "option_d": "", "answer": "A", "explanation": ""}, {"level": 15, "text": "黄河最终流入的海域是？", "option_a": "渤海", "option_b": "东海", "option_c": "南海", "option_d": "", "answer": "A", "explanation": ""}, {"level": 15, "text": "蜻蜓点水的目的是？", "option_a": "喝水", "option_b": "产卵", "option_c": "嬉戏", "option_d": "", "answer": "B", "explanation": ""}, {"level": 15, "text": "直角的度数是？", "option_a": "90°", "option_b": "180°", "option_c": "360°", "option_d": "", "answer": "A", "explanation": ""}, {"level": 15, "text": "大熊猫的主要食物是？", "option_a": "青草", "option_b": "竹子", "option_c": "树叶", "option_d": "", "answer": "B", "explanation": ""}, {"level": 15, "text": "北半球白昼最长的节气是？", "option_a": "夏至", "option_b": "冬至", "option_c": "春分", "option_d": "", "answer": "A", "explanation": ""}, {"level": 16, "text": "传说中创造汉字的人物是？", "option_a": "仓颉", "option_b": "炎帝", "option_c": "大禹", "option_d": "", "answer": "A", "explanation": ""}, {"level": 16, "text": "植物光合作用需要的气体是？", "option_a": "二氧化碳", "option_b": "氧气", "option_c": "氮气", "option_d": "", "answer": "A", "explanation": ""}, {"level": 16, "text": "企鹅的主要栖息地是？", "option_a": "北极", "option_b": "南极", "option_c": "赤道", "option_d": "", "answer": "B", "explanation": ""}, {"level": 16, "text": "“三人行，必有我师焉”出自？", "option_a": "《论语》", "option_b": "《孟子》", "option_c": "《大学》", "option_d": "", "answer": "A", "explanation": ""}, {"level": 16, "text": "我们先看到闪电后听到雷声，是因为？", "option_a": "光速大于声速", "option_b": "闪电更近", "option_c": "雷声延迟", "option_d": "", "answer": "A", "explanation": ""}, {"level": 17, "text": "下列属于农业益虫的是？", "option_a": "七星瓢虫", "option_b": "蝗虫", "option_c": "蚜虫", "option_d": "", "answer": "A", "explanation": ""}, {"level": 17, "text": "我国的首都是？", "option_a": "上海", "option_b": "北京", "option_c": "广州", "option_d": "", "answer": "B", "explanation": ""}, {"level": 17, "text": "彩虹一共有几种基础颜色？", "option_a": "5种", "option_b": "7种", "option_c": "9种", "option_d": "", "answer": "B", "explanation": ""}, {"level": 17, "text": "水的化学式是？", "option_a": "H₂O", "option_b": "CO₂", "option_c": "O₂", "option_d": "", "answer": "A", "explanation": ""}, {"level": 17, "text": "月亮是什么天体？", "option_a": "恒星", "option_b": "行星", "option_c": "卫星", "option_d": "", "answer": "C", "explanation": ""}, {"level": 18, "text": "一年有多少个节气？", "option_a": "12个", "option_b": "24个", "option_c": "36个", "option_d": "", "answer": "B", "explanation": ""}, {"level": 18, "text": "人体最坚硬的部位是？", "option_a": "骨头", "option_b": "牙齿", "option_c": "指甲", "option_d": "", "answer": "B", "explanation": ""}, {"level": 18, "text": "西湖位于我国哪个城市？", "option_a": "苏州", "option_b": "杭州", "option_c": "南京", "option_d": "", "answer": "B", "explanation": ""}, {"level": 18, "text": "萤火虫发光的主要目的是？", "option_a": "照明", "option_b": "求偶交流", "option_c": "散热", "option_d": "", "answer": "B", "explanation": ""}, {"level": 18, "text": "植物进行呼吸作用的时间是？", "option_a": "白天", "option_b": "夜晚", "option_c": "全天", "option_d": "", "answer": "C", "explanation": ""}, {"level": 19, "text": "体温计的常规量程是？", "option_a": "0-100℃", "option_b": "35-42℃", "option_c": "20-50℃", "option_d": "", "answer": "B", "explanation": ""}, {"level": 19, "text": "铅笔芯的主要成分是？", "option_a": "铅", "option_b": "石墨", "option_c": "碳纳米管", "option_d": "", "answer": "B", "explanation": ""}, {"level": 19, "text": "我国最大的淡水湖是？", "option_a": "洞庭湖", "option_b": "鄱阳湖", "option_c": "太湖", "option_d": "", "answer": "B", "explanation": ""}, {"level": 19, "text": "汽车刹车人前倾是因为？", "option_a": "惯性", "option_b": "重力", "option_c": "浮力", "option_d": "", "answer": "A", "explanation": ""}, {"level": 19, "text": "下列属于绝缘体的是？", "option_a": "铜丝", "option_b": "塑料", "option_c": "铁丝", "option_d": "", "answer": "B", "explanation": ""}, {"level": 20, "text": "地球公转一周的时间是？", "option_a": "一天", "option_b": "一个月", "option_c": "一年", "option_d": "", "answer": "C", "explanation": ""}, {"level": 20, "text": "地球自转一周的时间是？", "option_a": "12小时", "option_b": "24小时", "option_c": "36小时", "option_d": "", "answer": "B", "explanation": ""}, {"level": 20, "text": "仙人掌长刺的主要作用是？", "option_a": "美观", "option_b": "减少水分蒸发", "option_c": "防御动物", "option_d": "", "answer": "B", "explanation": ""}, {"level": 20, "text": "五星红旗红色象征？", "option_a": "光明", "option_b": "革命", "option_c": "和平", "option_d": "", "answer": "B", "explanation": ""}, {"level": 20, "text": "我国四大名著不包括？", "option_a": "《诗经》", "option_b": "《西游记》", "option_c": "《红楼梦》", "option_d": "", "answer": "A", "explanation": ""}, {"level": 21, "text": "闰年全年天数是？", "option_a": "365天", "option_b": "366天", "option_c": "364天", "option_d": "", "answer": "B", "explanation": ""}, {"level": 21, "text": "声音在哪种介质中传播最快？", "option_a": "空气", "option_b": "水", "option_c": "固体", "option_d": "", "answer": "C", "explanation": ""}, {"level": 21, "text": "蚕结茧后会变成？", "option_a": "蝴蝶", "option_b": "蚕蛾", "option_c": "毛毛虫", "option_d": "", "answer": "B", "explanation": ""}, {"level": 21, "text": "我国最长的内陆河是？", "option_a": "塔里木河", "option_b": "黄河", "option_c": "淮河", "option_d": "", "answer": "A", "explanation": ""}, {"level": 21, "text": "氧气的主要作用是？", "option_a": "呼吸燃烧", "option_b": "保温", "option_c": "遮光", "option_d": "", "answer": "A", "explanation": ""}, {"level": 22, "text": "下列属于可再生资源的是？", "option_a": "石油", "option_b": "风能", "option_c": "煤炭", "option_d": "", "answer": "B", "explanation": ""}, {"level": 22, "text": "哺乳动物的典型特征是？", "option_a": "卵生", "option_b": "胎生哺乳", "option_c": "两栖生活", "option_d": "", "answer": "B", "explanation": ""}, {"level": 22, "text": "秋天树叶变黄的原因是？", "option_a": "叶绿素减少", "option_b": "天气染色", "option_c": "树叶变质", "option_d": "", "answer": "A", "explanation": ""}, {"level": 22, "text": "元宵节的传统习俗是？", "option_a": "赏月", "option_b": "猜灯谜", "option_c": "扫墓", "option_d": "", "answer": "B", "explanation": ""}, {"level": 22, "text": "重阳节的传统习俗是？", "option_a": "登高赏菊", "option_b": "吃粽子", "option_c": "贴春联", "option_d": "", "answer": "A", "explanation": ""}, {"level": 23, "text": "人体气体交换的主要场所是？", "option_a": "气管", "option_b": "肺", "option_c": "鼻腔", "option_d": "", "answer": "B", "explanation": ""}, {"level": 23, "text": "我国的国球是？", "option_a": "篮球", "option_b": "乒乓球", "option_c": "羽毛球", "option_d": "", "answer": "B", "explanation": ""}, {"level": 23, "text": "“谁知盘中餐，粒粒皆辛苦”作者是？", "option_a": "李白", "option_b": "李绅", "option_c": "杜甫", "option_d": "", "answer": "B", "explanation": ""}, {"level": 23, "text": "干冰的主要成分是？", "option_a": "固态水", "option_b": "固态二氧化碳", "option_c": "固态氧气", "option_d": "", "answer": "B", "explanation": ""}, {"level": 23, "text": "莲藕孔洞的主要作用是？", "option_a": "储存空气", "option_b": "储存水分", "option_c": "美观", "option_d": "", "answer": "A", "explanation": ""}, {"level": 24, "text": "光年是什么单位？", "option_a": "时间单位", "option_b": "长度单位", "option_c": "速度单位", "option_d": "", "answer": "B", "explanation": ""}, {"level": 24, "text": "海水不能直接饮用的原因是？", "option_a": "含盐量高", "option_b": "有细菌", "option_c": "味道苦", "option_d": "", "answer": "A", "explanation": ""}, {"level": 24, "text": "我国古代用于导航的发明是？", "option_a": "火药", "option_b": "指南针", "option_c": "印刷术", "option_d": "", "answer": "B", "explanation": ""}, {"level": 24, "text": "绿色植物制造养料的主要器官是？", "option_a": "根", "option_b": "叶", "option_c": "茎", "option_d": "", "answer": "B", "explanation": ""}, {"level": 24, "text": "地球的天然卫星是？", "option_a": "太阳", "option_b": "月球", "option_c": "火星", "option_d": "", "answer": "B", "explanation": ""}, {"level": 25, "text": "AI拥有和人类一样的自主思考能力", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 25, "text": "智能人脸识别属于人工智能应用", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 25, "text": "可以向AI发送家庭住址、手机号等隐私信息", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 25, "text": "AI生成的内容需要人工甄别对错，不能全盘相信", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 25, "text": "细化提示词，能让AI输出的内容更贴合需求", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 26, "text": "AI具备真实的喜怒哀乐等情绪", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 26, "text": "考试时借助AI答题属于作弊行为", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 26, "text": "AI可以辅助我们构思作文、整理学习资料", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 26, "text": "AI可以凭空制造出真实的实物物品", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 26, "text": "短视频智能推荐、导航规划路线都用到了AI技术", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 27, "text": "手写作业、手绘图画属于AI创作内容", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 27, "text": "不可以利用AI冒充家长和老师沟通", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 27, "text": "AI的知识是自主学习、凭空创造出来的", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 27, "text": "AI换脸、伪造视频容易误导他人，属于不良使用行为", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 27, "text": "小学生使用AI的正确方式是辅助学习、独立思考", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 28, "text": "AI可以完全替代人类的课堂学习和动手实践", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 28, "text": "智能音箱、扫地机器人都属于AI智能产品", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 28, "text": "AI翻译可以替代英语学习，不用背诵单词", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 28, "text": "AI出现回答错误时，需要我们查阅资料核实修正", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 28, "text": "文明提问、清晰描述问题是使用AI的基本礼仪", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 29, "text": "AI可以生成虚假信息，这种现象被称为AI幻觉", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 29, "text": "嘈杂环境不会影响AI语音识别的准确率", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 29, "text": "可以借鉴AI作文思路，自主修改后完成作业", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 29, "text": "AI有自主意识，可以独立判断是非对错", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 29, "text": "利用AI制作虚假证件、截图是违规行为", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 30, "text": "AI智能练字可以辅助纠正字形，但不能替代手动练习", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 30, "text": "所有AI生成的内容都可以随意商用、转发", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 30, "text": "AI可以帮助我们梳理知识框架、制作思维导图", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 30, "text": "过度依赖AI会导致独立思考能力下降", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 30, "text": "AI可以听懂所有动物语言和无声手势", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 31, "text": "生成式AI可以根据文字创作图画、文章、诗歌", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 31, "text": "AI对话记录绝对不会被留存，可以随意发言", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 31, "text": "合理使用AI可以拓宽知识面，提升学习效率", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 31, "text": "AI可以预判人类未知的全新知识和想法", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 31, "text": "识别垃圾分类、违章车辆都用到AI图像识别技术", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 32, "text": "AI辅助学习的核心是偷懒省事、应付作业", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 32, "text": "AI没有真实的生活体验和情感共情能力", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 32, "text": "可以让AI生成暴力、造谣、低俗的不良内容", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 32, "text": "AI是人类编写的程序，发展主导者是人类", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 32, "text": "小学生使用AI的底线是诚信、文明、守法", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 33, "text": "地球自转形成了昼夜交替现象", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 33, "text": "鲸鱼是鱼类，不是哺乳动物", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 33, "text": "标准大气压下，水的沸点是100℃", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 33, "text": "企鹅生活在北极，北极熊生活在南极", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 33, "text": "植物光合作用可以吸收二氧化碳，释放氧气", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 34, "text": "光速传播速度比声速快", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 34, "text": "大熊猫是食肉目动物，主食是竹子", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 34, "text": "黄河是我国第一长河", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 34, "text": "直角的度数是90度", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 34, "text": "月亮本身不会发光，只能反射太阳光", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 35, "text": "一年有24个节气", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 35, "text": "人体最大的消化腺是胃", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 35, "text": "太阳能、风能都属于可再生能源", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 35, "text": "蜻蜓点水是为了喝水", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 35, "text": "所有鸟类都有羽毛", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 36, "text": "木星是太阳系体积最大的行星", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 36, "text": "“三人行，必有我师焉”出自《论语》", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 36, "text": "皮肤是人体面积最大的器官", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 36, "text": "立夏是夏季的第一个节气", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 36, "text": "蝗虫是农业益虫，能保护庄稼", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 37, "text": "海水含盐量高，不能直接饮用", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 37, "text": "指南针静止时一端指向地理北极", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 37, "text": "莲藕的孔洞是为了储存水分", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 37, "text": "小狗夏天吐舌头是为了散热降温", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 37, "text": "光年是计算时间的单位", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 38, "text": "我国国花是牡丹", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 38, "text": "铅笔芯含有大量金属铅", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 38, "text": "平面镜成像是正立等大的虚像", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 38, "text": "闰年有366天，平年有365天", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 38, "text": "声音可以在真空中传播", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 39, "text": "水稻、小麦属于粮食作物", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 39, "text": "地球公转形成四季变化", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 39, "text": "清明节既是节气也是传统节日", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 39, "text": "人体呼吸气体交换的场所是鼻腔", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 39, "text": "乒乓球是我国的国球", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 40, "text": "干冰是固态的水", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "B", "explanation": "√ 正确 / × 错误"}, {"level": 40, "text": "惯性可以让运动的物体保持运动状态", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 40, "text": "塑料、橡胶都是绝缘体", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 40, "text": "我国最大的城市是上海", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}, {"level": 40, "text": "植物只在白天进行光合作用", "option_a": "正确", "option_b": "错误", "option_c": "", "option_d": "", "answer": "A", "explanation": "√ 正确 / × 错误"}];
+const TOTAL_LEVELS = 40;
+const PER_LEVEL = 5;
+const LS_KEY = 'baike_quiz_offline_v1';
+
+/* ================= 进度存取 ================= */
+function loadProgress(){
+  try{ const p = JSON.parse(localStorage.getItem(LS_KEY)); if(p && p.unlocked>=1) return p; }catch(e){}
+  return {unlocked:1};
+}
+function saveProgress(p){ try{ localStorage.setItem(LS_KEY, JSON.stringify(p)); }catch(e){} }
+let progress = loadProgress();
+
+/* ================= 音效（Web Audio，无需外部文件） ================= */
+let actx = null;
+function audio(){ if(!actx){ try{ actx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } if(actx && actx.state==='suspended') actx.resume(); return actx; }
+function tone(freq, start, dur, type='sine', vol=.18){
+  const a = audio(); if(!a) return;
+  const o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.value = freq;
+  g.gain.setValueAtTime(0, a.currentTime+start);
+  g.gain.linearRampToValueAtTime(vol, a.currentTime+start+.02);
+  g.gain.exponentialRampToValueAtTime(.001, a.currentTime+start+dur);
+  o.connect(g); g.connect(a.destination);
+  o.start(a.currentTime+start); o.stop(a.currentTime+start+dur+.05);
+}
+const sfx = {
+  click(){ tone(660,.0,.08,'triangle',.12); },
+  correct(){ tone(523,.0,.12,'triangle'); tone(784,.09,.16,'triangle'); },
+  wrong(){ tone(220,.0,.22,'sawtooth',.14); tone(180,.12,.25,'sawtooth',.12); },
+  win(){ [523,659,784,1047].forEach((f,i)=>tone(f,i*.12,.28,'triangle',.16)); },
+  final(){ [523,659,784,1047,1319].forEach((f,i)=>tone(f,i*.13,.4,'triangle',.18)); }
+};
+
+/* ================= 视图切换 ================= */
+const views = ['view-home','view-play','view-learn'];
+function show(name){
+  views.forEach(v => document.getElementById(v).classList.toggle('hidden', v!==name));
+  window.scrollTo(0,0);
+}
+function showHome(){ show('view-home'); renderHome(); }
+function showLearn(){ show('view-learn'); buildLearnFilter(); renderLearn(); }
+
+/* ================= 首页 ================= */
+function renderHome(){
+  const cleared = progress.unlocked - 1;
+  document.getElementById('stat-clear').textContent = cleared + ' / 40 关';
+  document.getElementById('stat-next').textContent = '第 ' + Math.min(progress.unlocked, TOTAL_LEVELS) + ' 关';
+  document.getElementById('stat-bar').style.width = (cleared/40*100) + '%';
+  const sel = document.getElementById('pick-level');
+  sel.innerHTML = '';
+  for(let l=1; l<=Math.min(progress.unlocked, TOTAL_LEVELS); l++){
+    const o = document.createElement('option');
+    o.value = l; o.textContent = '第 ' + l + ' 关' + (l===1 && progress.unlocked===1 ? '（当前）' : '');
+    sel.appendChild(o);
+  }
+}
+function startGame(level){
+  const p = loadProgress();
+  const target = level || Math.min(p.unlocked, TOTAL_LEVELS);
+  progress = p;
+  beginLevel(target);
+  show('view-play');
+  sfx.click();
+}
+
+/* ================= 闯关逻辑 ================= */
+let state = { level:1, qIndex:0, answered:false };
+function questionsOf(level){ return QUESTIONS.filter(q => q.level === level).slice(0, PER_LEVEL); }
+function beginLevel(level){
+  state = { level, qIndex:0, answered:false };
+  renderQuestion();
+}
+function renderQuestion(){
+  document.getElementById('play-win').classList.add('hidden');
+  document.getElementById('play-final').classList.add('hidden');
+  const qs = questionsOf(state.level);
+  if(!qs.length){ show('view-home'); return; }
+  const q = qs[state.qIndex];
+  document.getElementById('play-level').textContent = state.level;
+  document.getElementById('play-count').textContent = '第 ' + (state.qIndex+1) + ' / ' + PER_LEVEL + ' 题';
+  document.getElementById('play-bar').style.width = ((state.qIndex+1)/PER_LEVEL*100) + '%';
+  document.getElementById('play-q').textContent = q.text;
+  const opts = [['A',q.option_a],['B',q.option_b],['C',q.option_c],['D',q.option_d]].filter(o=>o[1]);
+  const box = document.getElementById('play-opts');
+  box.innerHTML = '';
+  opts.forEach(([k,txt], i) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.innerHTML = '<span class="key">' + k + '</span>' + txt;
+    b.onclick = () => answer(k, b, opts);
+    box.appendChild(b);
+  });
+  document.getElementById('play-msg').innerHTML = '';
+  state.answered = false;
+}
+function answer(key, btn, opts){
+  if(state.answered) return;
+  state.answered = true;
+  const q = questionsOf(state.level)[state.qIndex];
+  const msgBox = document.getElementById('play-msg');
+  const allBtns = document.querySelectorAll('#play-opts .opt');
+  allBtns.forEach(b => b.disabled = true);
+  if(key === q.answer){
+    btn.classList.add('correct');
+    sfx.correct();
+    msgBox.innerHTML = '<div class="msg ok">✅ 回答正确！</div>';
+    if(state.qIndex + 1 >= PER_LEVEL){
+      // 本关 5 题全对 → 过关
+      sfx.win();
+      showWin();
+    } else {
+      setTimeout(() => { state.qIndex++; renderQuestion(); }, 900);
+    }
+  } else {
+    btn.classList.add('wrong');
+    sfx.wrong();
+    // 高亮正确答案
+    const opts = [['A',q.option_a],['B',q.option_b],['C',q.option_c],['D',q.option_d]].filter(o=>o[1]);
+    opts.forEach(([k]) => {
+      if(k === q.answer){
+        allBtns.forEach(b => { if(b.querySelector('.key').textContent === k) b.classList.add('correct'); });
+      }
+    });
+    msgBox.innerHTML = '<div class="msg err">❌ 回答错误！正确答案是 ' + q.answer + '。本关重新开始…</div>';
+    setTimeout(() => { beginLevel(state.level); }, 1800);
+  }
+}
+function showWin(){
+  document.getElementById('play-win').classList.remove('hidden');
+  if(state.level >= TOTAL_LEVELS){
+    document.getElementById('win-title').textContent = '全部通关！';
+    document.getElementById('win-sub').textContent = '你已通过全部 40 关 🎉';
+    document.getElementById('win-next-btn').textContent = '🏆 我已通关';
+    document.getElementById('win-next-btn').onclick = () => showFinal();
+  } else {
+    const next = state.level + 1;
+    document.getElementById('win-title').textContent = '全对！闯关成功';
+    document.getElementById('win-sub').textContent = '第 ' + state.level + ' 关完成，准备进入第 ' + next + ' 关';
+    document.getElementById('win-next-btn').textContent = '进入第 ' + next + ' 关 →';
+    document.getElementById('win-next-btn').onclick = () => nextLevel();
+  }
+  // 解锁下一关
+  progress = loadProgress();
+  if(progress.unlocked < state.level + 1) progress.unlocked = state.level + 1;
+  saveProgress(progress);
+}
+function showFinal(){
+  document.getElementById('play-win').classList.add('hidden');
+  document.getElementById('play-final').classList.remove('hidden');
+  sfx.final();
+}
+function nextLevel(){
+  const next = state.level + 1;
+  if(next > TOTAL_LEVELS){ showFinal(); return; }
+  beginLevel(next);
+  sfx.click();
+}
+function resetProgress(){
+  sfx.click();
+  if(confirm('确定要重置全部闯关进度吗？将从第 1 关重新开始。')){
+    progress = {unlocked:1};
+    saveProgress(progress);
+    renderHome();
+    alert('✅ 进度已重置，从第 1 关开始！');
+  }
+}
+
+/* ================= 学习模式 ================= */
+function buildLearnFilter(){
+  const sel = document.getElementById('learn-filter');
+  sel.innerHTML = '<option value="0">全部题目（200 题）</option>';
+  for(let l=1; l<=TOTAL_LEVELS; l++){
+    const o = document.createElement('option');
+    o.value = l; o.textContent = '第 ' + l + ' 关（' + l + ' ~ ' + (l*5) + ' 题）';
+    sel.appendChild(o);
+  }
+  sel.value = '0';
+}
+function renderLearn(){
+  const filter = parseInt(document.getElementById('learn-filter').value);
+  const qs = filter ? questionsOf(filter) : QUESTIONS.slice();
+  const list = document.getElementById('learn-list');
+  list.innerHTML = '';
+  qs.forEach((q, idx) => {
+    const item = document.createElement('div');
+    item.className = 'learn-item card';
+    const opts = [['A',q.option_a],['B',q.option_b],['C',q.option_c],['D',q.option_d]].filter(o=>o[1]);
+    const optHtml = opts.map(([k,t]) => '<div style="font-size:13px;color:var(--dim);margin:4px 0"><span class="lvl-chip">' + k + '</span>' + t + '</div>').join('');
+    const exp = q.explanation ? '<div style="margin-top:8px;color:var(--dim);font-size:13px">💡 ' + q.explanation + '</div>' : '';
+    item.innerHTML =
+      '<div class="learn-q"><span class="lvl-chip">第 ' + q.level + ' 关 · ' + (idx+1) + '</span>' + q.text + '</div>' +
+      '<div>' + optHtml + '</div>' +
+      '<div class="learn-ans" id="ans-' + (filter?('f'+q.level+'-'+idx):('a'+idx)) + '"><b>✅ 正确答案：' + q.answer + '</b>' + exp + '</div>' +
+      '<button class="btn btn-ghost" style="padding:9px;font-size:13px;margin-top:10px" onclick="toggleAns(this)">👁 显示答案</button>';
+    list.appendChild(item);
+  });
+}
+function toggleAns(btn){
+  sfx.click();
+  const ans = btn.previousElementSibling;
+  if(ans.classList.contains('show')){
+    ans.classList.remove('show');
+    btn.textContent = '👁 显示答案';
+  } else {
+    ans.classList.add('show');
+    btn.textContent = '🙈 隐藏答案';
+  }
+}
+
+/* ================= 启动 ================= */
+renderHome();
+document.addEventListener('click', () => audio(), {once:true});
+</script>
+</body>
+</html>
