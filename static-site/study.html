@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学习模式 · 百科知识大闯关</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="logo">🚀</span> 百科知识大闯关
+    </a>
+    <nav class="nav-links">
+      <a class="btn btn-ghost btn-sm" href="game.html">▶ 开始闯关</a>
+      <a class="btn btn-ghost btn-sm" href="index.html">🏠 首页</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <h2 class="map-title">学习模式 · 浏览全部题目</h2>
+    <p style="color:var(--dim);font-size:14px;margin-bottom:18px;">
+      共 <span id="study-total">0</span> 道题 · 点击「显示答案」查看正确答案
+    </p>
+
+    <!-- 工具栏 -->
+    <div class="study-toolbar">
+      <input class="search-input" id="search-box" type="text" placeholder="🔍 搜索题目关键词…" autocomplete="off">
+      <select class="filter-select" id="level-filter">
+        <option value="0">全部关卡</option>
+      </select>
+      <button class="btn btn-sm" id="btn-toggle-answers">🙈 隐藏全部答案</button>
+    </div>
+
+    <!-- 题目列表 -->
+    <div class="q-list" id="q-list"></div>
+    <div id="q-empty" style="display:none;text-align:center;color:var(--dim);padding:40px 0;">未找到匹配的题目</div>
+  </main>
+
+  <footer class="footer">百科知识大闯关 · 学习模式</footer>
+
+  <div id="toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/study.js"></script>
+</body>
+</html>

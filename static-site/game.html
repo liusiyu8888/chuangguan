@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闯关 · 百科知识大闯关</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="logo">🚀</span> 百科知识大闯关
+    </a>
+    <nav class="nav-links">
+      <button class="sound-toggle" id="sound-toggle" title="音效开关">🔊</button>
+      <a class="btn btn-ghost btn-sm" href="index.html">🏠 首页</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- 关卡头部 -->
+    <div class="game-header">
+      <div>
+        <h2 id="level-title" style="font-size:24px;font-weight:900;">第 1 关</h2>
+        <div style="color:var(--dim);font-size:13px;margin-top:4px;" id="level-sub">挑战 5 题 · 全对过关</div>
+      </div>
+      <a class="btn btn-sm" href="index.html">🗺 关卡地图</a>
+    </div>
+    <div class="progress-bar"><div class="fill" id="progress-fill" style="width:0%"></div></div>
+
+    <!-- 题目面板 -->
+    <div class="panel glow q-panel" style="margin-top:22px;">
+      <div class="q-meta">
+        <span id="q-index">第 1 / 5 题</span>
+        <span id="q-score">连续答对 0 / 5</span>
+      </div>
+      <div class="q-text" id="q-text">加载中…</div>
+      <div class="options" id="q-options"></div>
+      <div class="feedback" id="q-feedback"></div>
+    </div>
+
+    <!-- 过关结算弹层 -->
+    <div class="overlay" id="overlay">
+      <div class="panel result-card">
+        <div class="emoji" id="result-emoji">🎉</div>
+        <h2 id="result-title">过关！</h2>
+        <div class="desc" id="result-desc"></div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-primary" id="btn-next">▶ 下一关</button>
+          <a class="btn" href="index.html">🗺 返回地图</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">百科知识大闯关 · 每关 5 题全对过关</footer>
+
+  <div id="toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

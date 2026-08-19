@@ -28,6 +28,47 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 > 提示：首次启动自动建表并写入内置题库。改 schema 后删除根目录 `app.db` 再启动即可重建。
 
+## 纯静态版（`static-site/`，可直接发布到静态托管）
+
+`static-site/` 是**完全纯静态、零后端、零依赖**的多文件版本，专为「比赛提交 / 外网发布」设计：
+
+```
+static-site/
+├── index.html      # 首页：开始闯关 / 学习模式 / 关卡地图 / 进度统计 / 重置
+├── game.html       # 闯关页：40 关 × 5 题，全对过关，答错本关重来
+├── study.html      # 学习模式：浏览全部题目，可搜索 / 按关卡筛选，答案默认隐藏
+├── css/style.css   # 科技感暗色主题
+└── js/
+    ├── data.js     # 200 题数据（由题库自动生成）
+    ├── common.js   # 进度存储（localStorage）+ 音效（Web Audio）
+    ├── game.js     # 闯关逻辑
+    ├── index.js    # 首页逻辑
+    └── study.js    # 学习模式逻辑
+```
+
+- **纯静态**：无 FastAPI / 无数据库 / 无构建步骤，任意静态服务器都能跑
+- **双击即玩**：直接打开 `static-site/index.html` 即可
+- **可发布**：可部署到 GitHub Pages / AtomGit Pages / Vercel / Netlify / Gitee Pages 等任意静态托管
+- **进度本地保存**：闯关进度存浏览器 localStorage，换设备不共享（纯静态特性）
+
+**重新生成题库数据**（`builtin_questions.py` 变更后）：
+
+```bash
+python gen_static_data.py
+```
+
+### 发布到 GitHub Pages
+
+1. 把 `static-site/` 目录内容推到你的 GitHub 仓库（或单独建仓库）
+2. 仓库 **Settings → Pages** → Source 选 `main` 分支 + 根目录（或 `static-site` 目录）→ Save
+3. 稍等片刻即获得外网链接：`https://<你的用户名>.github.io/<仓库名>/`
+
+### 发布到 AtomGit Pages
+
+1. 推送 `static-site/` 到 AtomGit 仓库
+2. 在仓库 **服务 / Pages** 里选择部署目录 `static-site/` 并启用
+3. 获得 `https://<用户名>.atomgit.com/<仓库名>/` 外网链接
+
 ## 离线版（单文件，双击即玩）
 
 根目录 `百科知识大闯关-离线版.html` 是**不依赖任何后端 / 网络 / 安装环境**的单文件版：
