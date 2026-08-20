@@ -5,6 +5,7 @@ window.QUIZ_DATA = {
   {
    "id": 1,
    "level": 1,
+   "category": "AI知识",
    "text": "人工智能的英文缩写是？",
    "option_a": "PC",
    "option_b": "AI",
@@ -16,6 +17,7 @@ window.QUIZ_DATA = {
   {
    "id": 2,
    "level": 1,
+   "category": "AI知识",
    "text": "豆包、智能对话机器人属于什么类型工具？",
    "option_a": "人工智能",
    "option_b": "办公软件",
@@ -27,6 +29,7 @@ window.QUIZ_DATA = {
   {
    "id": 3,
    "level": 1,
+   "category": "AI知识",
    "text": "我们给AI下达任务、描述需求的文字统称？",
    "option_a": "提示词",
    "option_b": "代码",
@@ -38,6 +41,7 @@ window.QUIZ_DATA = {
   {
    "id": 4,
    "level": 1,
+   "category": "AI知识",
    "text": "AI本身是否具备真实的人类情感？",
    "option_a": "有喜怒哀乐",
    "option_b": "没有，仅模拟表达",
@@ -49,6 +53,7 @@ window.QUIZ_DATA = {
   {
    "id": 5,
    "level": 1,
+   "category": "AI知识",
    "text": "想要AI生成专属绘画作品，我们需要？",
    "option_a": "详细文字描述画面",
    "option_b": "发送隐私信息",
@@ -60,6 +65,7 @@ window.QUIZ_DATA = {
   {
    "id": 6,
    "level": 2,
+   "category": "AI知识",
    "text": "小学生使用AI完成作业的正确方式是？",
    "option_a": "抄全部答案",
    "option_b": "参考思路独立完成",
@@ -71,6 +77,7 @@ window.QUIZ_DATA = {
   {
    "id": 7,
    "level": 2,
+   "category": "AI知识",
    "text": "以下不属于AI产品的是？",
    "option_a": "智能音箱",
    "option_b": "纸质笔记本",
@@ -82,6 +89,7 @@ window.QUIZ_DATA = {
   {
    "id": 8,
    "level": 2,
+   "category": "AI知识",
    "text": "和AI互动时，绝对不能发送的是？",
    "option_a": "学习问题",
    "option_b": "家庭住址、身份证号",
@@ -93,6 +101,7 @@ window.QUIZ_DATA = {
   {
    "id": 9,
    "level": 2,
+   "category": "AI知识",
    "text": "AI学习和积累知识的核心依靠是？",
    "option_a": "海量数据+算法",
    "option_b": "自主观察世界",
@@ -104,6 +113,7 @@ window.QUIZ_DATA = {
   {
    "id": 10,
    "level": 2,
+   "category": "AI知识",
    "text": "手机人脸解锁、人脸打卡运用的核心技术是？",
    "option_a": "AI图像识别",
    "option_b": "放大镜成像",
@@ -115,6 +125,7 @@ window.QUIZ_DATA = {
   {
    "id": 11,
    "level": 3,
+   "category": "AI知识",
    "text": "关于AI生成图片，说法正确的是？",
    "option_a": "场景不一定真实存在",
    "option_b": "都是实拍照片",
@@ -126,6 +137,7 @@ window.QUIZ_DATA = {
   {
    "id": 12,
    "level": 3,
+   "category": "AI知识",
    "text": "如何提问能让AI给出最准确的答案？",
    "option_a": "清晰完整描述问题",
    "option_b": "只发单个字",
@@ -137,6 +149,7 @@ window.QUIZ_DATA = {
   {
    "id": 13,
    "level": 3,
+   "category": "AI知识",
    "text": "下列哪项是AI无法做到的？",
    "option_a": "写小故事",
    "option_b": "解答科普问题",
@@ -148,6 +161,7 @@ window.QUIZ_DATA = {
   {
    "id": 14,
    "level": 3,
+   "category": "AI知识",
    "text": "面对AI给出的答案，我们应该？",
    "option_a": "全盘相信",
    "option_b": "辨别对错、理性参考",
@@ -159,6 +173,7 @@ window.QUIZ_DATA = {
   {
    "id": 15,
    "level": 3,
+   "category": "AI知识",
    "text": "适合借助AI完成的学习任务是？",
    "option_a": "构思作文提纲",
    "option_b": "代替期末考试",
@@ -170,6 +185,7 @@ window.QUIZ_DATA = {
   {
    "id": 16,
    "level": 4,
+   "category": "AI知识",
    "text": "AI程序运行必须依托的设备是？",
    "option_a": "电子设备（手机/电脑）",
    "option_b": "纸质书本",
@@ -181,6 +197,7 @@ window.QUIZ_DATA = {
   {
    "id": 17,
    "level": 4,
+   "category": "AI知识",
    "text": "主流AI机器人最擅长识别的人类语言是？",
    "option_a": "普通话",
    "option_b": "动物语言",
@@ -192,6 +209,7 @@ window.QUIZ_DATA = {
   {
    "id": 18,
    "level": 4,
+   "category": "AI知识",
    "text": "使用AI的文明行为是？",
    "option_a": "请教学习难题",
    "option_b": "生成暴力内容",
@@ -203,6 +221,7 @@ window.QUIZ_DATA = {
   {
    "id": 19,
    "level": 4,
+   "category": "AI知识",
    "text": "AI绘画的核心功能是？",
    "option_a": "根据文字生成图画",
    "option_b": "手动手绘图片",
@@ -214,6 +233,7 @@ window.QUIZ_DATA = {
   {
    "id": 20,
    "level": 4,
+   "category": "AI知识",
    "text": "关于AI对话记录，说法正确的是？",
    "option_a": "可能被留存，禁止发隐私",
    "option_b": "会立刻自动消失",
@@ -225,6 +245,7 @@ window.QUIZ_DATA = {
   {
    "id": 21,
    "level": 5,
+   "category": "AI知识",
    "text": "手机导航自动规划最优路线，运用了？",
    "option_a": "AI智能算法",
    "option_b": "随机猜测",
@@ -236,6 +257,7 @@ window.QUIZ_DATA = {
   {
    "id": 22,
    "level": 5,
+   "category": "AI知识",
    "text": "发现AI答案明显错误时，应该？",
    "option_a": "直接采信",
    "option_b": "查阅资料核实",
@@ -247,6 +269,7 @@ window.QUIZ_DATA = {
   {
    "id": 23,
    "level": 5,
+   "category": "AI知识",
    "text": "以下不属于AI创作的是？",
    "option_a": "手写日记",
    "option_b": "AI写诗",
@@ -258,6 +281,7 @@ window.QUIZ_DATA = {
   {
    "id": 24,
    "level": 5,
+   "category": "AI知识",
    "text": "能否让AI冒充家长和老师沟通？",
    "option_a": "不可以，属于不诚信行为",
    "option_b": "方便时可以",
@@ -269,6 +293,7 @@ window.QUIZ_DATA = {
   {
    "id": 25,
    "level": 5,
+   "category": "AI知识",
    "text": "AI的知识来源是？",
    "option_a": "整合已有数据",
    "option_b": "自主发明新知识",
@@ -280,6 +305,7 @@ window.QUIZ_DATA = {
   {
    "id": 26,
    "level": 6,
+   "category": "AI知识",
    "text": "短视频平台自动推送喜欢的视频，依靠？",
    "option_a": "AI推荐技术",
    "option_b": "人工筛选",
@@ -291,6 +317,7 @@ window.QUIZ_DATA = {
   {
    "id": 27,
    "level": 6,
+   "category": "AI知识",
    "text": "让AI修改作文，效果最好的做法是？",
    "option_a": "明确修改要求",
    "option_b": "只发半篇作文",
@@ -302,6 +329,7 @@ window.QUIZ_DATA = {
   {
    "id": 28,
    "level": 6,
+   "category": "AI知识",
    "text": "对待AI生成作文的正确做法是？",
    "option_a": "借鉴思路自主改写",
    "option_b": "一字不改直接上交",
@@ -313,6 +341,7 @@ window.QUIZ_DATA = {
   {
    "id": 29,
    "level": 6,
+   "category": "AI知识",
    "text": "智能扫地机器人避障功能依靠？",
    "option_a": "AI感知识别",
    "option_b": "视觉眼睛",
@@ -324,6 +353,7 @@ window.QUIZ_DATA = {
   {
    "id": 30,
    "level": 6,
+   "category": "AI知识",
    "text": "我们应该将AI定义为？",
    "option_a": "人类的学习辅助工具",
    "option_b": "完美无缺的智者",
@@ -335,6 +365,7 @@ window.QUIZ_DATA = {
   {
    "id": 31,
    "level": 7,
+   "category": "AI知识",
    "text": "不适合借助AI学习的内容是？",
    "option_a": "不文明段子、恶作剧方法",
    "option_b": "词语解释",
@@ -346,6 +377,7 @@ window.QUIZ_DATA = {
   {
    "id": 32,
    "level": 7,
+   "category": "AI知识",
    "text": "英文Prompt的中文通用名称是？",
    "option_a": "提示词",
    "option_b": "指令码",
@@ -357,6 +389,7 @@ window.QUIZ_DATA = {
   {
    "id": 33,
    "level": 7,
+   "category": "AI知识",
    "text": "AI模拟的情绪属于？",
    "option_a": "文字模仿，无真实感受",
    "option_b": "真实喜怒哀乐",
@@ -368,6 +401,7 @@ window.QUIZ_DATA = {
   {
    "id": 34,
    "level": 7,
+   "category": "AI知识",
    "text": "纯手动直尺画图属于AI应用吗？",
    "option_a": "不属于",
    "option_b": "属于",
@@ -379,6 +413,7 @@ window.QUIZ_DATA = {
   {
    "id": 35,
    "level": 7,
+   "category": "AI知识",
    "text": "AI翻译的主要作用是？",
    "option_a": "辅助理解多国语言",
    "option_b": "结果绝对准确",
@@ -390,6 +425,7 @@ window.QUIZ_DATA = {
   {
    "id": 36,
    "level": 8,
+   "category": "AI知识",
    "text": "向AI请教习题的核心目的是？",
    "option_a": "弄懂解题思路",
    "option_b": "只抄最终答案",
@@ -401,6 +437,7 @@ window.QUIZ_DATA = {
   {
    "id": 37,
    "level": 8,
+   "category": "AI知识",
    "text": "AI识别图片中动物、植物的技术是？",
    "option_a": "图像识别",
    "option_b": "图像复印",
@@ -412,6 +449,7 @@ window.QUIZ_DATA = {
   {
    "id": 38,
    "level": 8,
+   "category": "AI知识",
    "text": "AI换脸视频最大的隐患是？",
    "option_a": "伪造画面，误导他人",
    "option_b": "画质模糊",
@@ -423,6 +461,7 @@ window.QUIZ_DATA = {
   {
    "id": 39,
    "level": 8,
+   "category": "AI知识",
    "text": "学习中对待AI的核心态度是？",
    "option_a": "辅助学习，不依赖",
    "option_b": "全程替代自己思考",
@@ -434,6 +473,7 @@ window.QUIZ_DATA = {
   {
    "id": 40,
    "level": 8,
+   "category": "AI知识",
    "text": "普通AI无法完成的行为是？",
    "option_a": "线下运动、上课",
    "option_b": "整理资料",
@@ -445,6 +485,7 @@ window.QUIZ_DATA = {
   {
    "id": 41,
    "level": 9,
+   "category": "AI知识",
    "text": "智能手表语音问答功能依托？",
    "option_a": "AI语音识别技术",
    "option_b": "手动输入",
@@ -456,6 +497,7 @@ window.QUIZ_DATA = {
   {
    "id": 42,
    "level": 9,
+   "category": "AI知识",
    "text": "创作小故事不需要给AI提供？",
    "option_a": "银行卡密码",
    "option_b": "故事主题",
@@ -467,6 +509,7 @@ window.QUIZ_DATA = {
   {
    "id": 43,
    "level": 9,
+   "category": "AI知识",
    "text": "AI编造虚假、不存在信息的现象被称为？",
    "option_a": "AI幻觉",
    "option_b": "AI出错",
@@ -478,6 +521,7 @@ window.QUIZ_DATA = {
   {
    "id": 44,
    "level": 9,
+   "category": "AI知识",
    "text": "最规范的AI使用学习习惯是？",
    "option_a": "先思考，后求助",
    "option_b": "遇题直接找AI",
@@ -489,6 +533,7 @@ window.QUIZ_DATA = {
   {
    "id": 45,
    "level": 9,
+   "category": "AI知识",
    "text": "AI语音翻译可以实现的功能是？",
    "option_a": "中英文互转",
    "option_b": "听懂动物语言",
@@ -500,6 +545,7 @@ window.QUIZ_DATA = {
   {
    "id": 46,
    "level": 10,
+   "category": "AI知识",
    "text": "考试期间使用AI答题属于什么行为？",
    "option_a": "作弊违规",
    "option_b": "正常学习",
@@ -511,6 +557,7 @@ window.QUIZ_DATA = {
   {
    "id": 47,
    "level": 10,
+   "category": "AI知识",
    "text": "关于AI生成内容的版权，说法正确的是？",
    "option_a": "不可随意冒充原创商用",
    "option_b": "生成即归个人所有",
@@ -522,6 +569,7 @@ window.QUIZ_DATA = {
   {
    "id": 48,
    "level": 10,
+   "category": "AI知识",
    "text": "交通摄像头识别违章车辆运用了？",
    "option_a": "AI图像识别",
    "option_b": "人工肉眼监控",
@@ -533,6 +581,7 @@ window.QUIZ_DATA = {
   {
    "id": 49,
    "level": 10,
+   "category": "AI知识",
    "text": "想要AI绘画效果更好，需要？",
    "option_a": "细化画面描述提示词",
    "option_b": "简化所有要求",
@@ -544,6 +593,7 @@ window.QUIZ_DATA = {
   {
    "id": 50,
    "level": 10,
+   "category": "AI知识",
    "text": "AI区别于普通计算器的核心优势是？",
    "option_a": "能理解语言、完成多元任务",
    "option_b": "计算速度更快",
@@ -555,6 +605,7 @@ window.QUIZ_DATA = {
   {
    "id": 51,
    "level": 11,
+   "category": "AI知识",
    "text": "禁止要求AI生成的内容是？",
    "option_a": "虚假谣言、暴力内容",
    "option_b": "手抄报素材",
@@ -566,6 +617,7 @@ window.QUIZ_DATA = {
   {
    "id": 52,
    "level": 11,
+   "category": "AI知识",
    "text": "AI技术进步的核心动力是？",
    "option_a": "人类持续研发更新",
    "option_b": "自主进化升级",
@@ -577,6 +629,7 @@ window.QUIZ_DATA = {
   {
    "id": 53,
    "level": 11,
+   "category": "AI知识",
    "text": "AI听不懂问题时，正确做法是？",
    "option_a": "重新清晰组织语言提问",
    "option_b": "重复刷屏发送",
@@ -588,6 +641,7 @@ window.QUIZ_DATA = {
   {
    "id": 54,
    "level": 11,
+   "category": "AI知识",
    "text": "AI绘画、AI写作属于哪类AI？",
    "option_a": "生成式AI",
    "option_b": "传统计算器AI",
@@ -599,6 +653,7 @@ window.QUIZ_DATA = {
   {
    "id": 55,
    "level": 11,
+   "category": "AI知识",
    "text": "使用AI学习最需要保留的能力是？",
    "option_a": "独立思考",
    "option_b": "完全依赖AI",
@@ -610,6 +665,7 @@ window.QUIZ_DATA = {
   {
    "id": 56,
    "level": 12,
+   "category": "AI知识",
    "text": "嘈杂环境会对AI语音识别造成什么影响？",
    "option_a": "准确率降低",
    "option_b": "准确率提升",
@@ -621,10 +677,11 @@ window.QUIZ_DATA = {
   {
    "id": 57,
    "level": 12,
-   "text": "大模型AI能够同时理解文字和图片，这种能力被称为？",
-   "option_a": "多模态",
-   "option_b": "单模态",
-   "option_c": "无模态",
+   "category": "AI知识",
+   "text": "以下哪项属于AI语音识别技术的典型应用？",
+   "option_a": "语音输入转文字",
+   "option_b": "手写课堂笔记",
+   "option_c": "纸质书籍阅读",
    "option_d": "",
    "answer": "A",
    "explanation": ""
@@ -632,32 +689,35 @@ window.QUIZ_DATA = {
   {
    "id": 58,
    "level": 12,
-   "text": "使用AI生成图片后，正确的做法是？",
-   "option_a": "注明由AI生成，不冒充原创",
-   "option_b": "直接署上自己的名字",
-   "option_c": "随意商用赚钱",
+   "category": "AI知识",
+   "text": "AI助手无法直接帮我们完成的事情是？",
+   "option_a": "解答数学题思路",
+   "option_b": "亲自到校上课",
+   "option_c": "翻译英文句子",
    "option_d": "",
-   "answer": "A",
+   "answer": "B",
    "explanation": ""
   },
   {
    "id": 59,
    "level": 12,
-   "text": "AI机器人需要通过什么来学习和进步？",
-   "option_a": "大量数据训练",
-   "option_b": "自动进化",
-   "option_c": "凭空出现",
+   "category": "AI知识",
+   "text": "使用AI生成文章后，正确的做法是？",
+   "option_a": "直接署名发表",
+   "option_b": "检查修改并合理使用",
+   "option_c": "从不使用AI",
    "option_d": "",
-   "answer": "A",
+   "answer": "B",
    "explanation": ""
   },
   {
    "id": 60,
    "level": 12,
-   "text": "下列哪一项属于AI的合理应用？",
-   "option_a": "帮助老人语音拨号",
-   "option_b": "替人考试作弊",
-   "option_c": "伪造新闻视频",
+   "category": "AI知识",
+   "text": "自动驾驶汽车识别行人和车辆依靠的是？",
+   "option_a": "AI视觉感知技术",
+   "option_b": "司机肉眼观察",
+   "option_c": "随机行驶路线",
    "option_d": "",
    "answer": "A",
    "explanation": ""
@@ -665,6 +725,7 @@ window.QUIZ_DATA = {
   {
    "id": 61,
    "level": 13,
+   "category": "百科知识",
    "text": "地球围绕哪个天体公转？",
    "option_a": "月球",
    "option_b": "太阳",
@@ -676,6 +737,7 @@ window.QUIZ_DATA = {
   {
    "id": 62,
    "level": 13,
+   "category": "百科知识",
    "text": "下列属于哺乳动物的是？",
    "option_a": "鲸鱼",
    "option_b": "公鸡",
@@ -687,6 +749,7 @@ window.QUIZ_DATA = {
   {
    "id": 63,
    "level": 13,
+   "category": "百科知识",
    "text": "一年共有几个季节？",
    "option_a": "3个",
    "option_b": "4个",
@@ -698,6 +761,7 @@ window.QUIZ_DATA = {
   {
    "id": 64,
    "level": 13,
+   "category": "百科知识",
    "text": "标准大气压下，水结冰的温度是？",
    "option_a": "0℃",
    "option_b": "10℃",
@@ -709,6 +773,7 @@ window.QUIZ_DATA = {
   {
    "id": 65,
    "level": 13,
+   "category": "百科知识",
    "text": "鸟类最核心的特征是拥有？",
    "option_a": "翅膀",
    "option_b": "羽毛",
@@ -720,6 +785,7 @@ window.QUIZ_DATA = {
   {
    "id": 66,
    "level": 14,
+   "category": "百科知识",
    "text": "太阳系中体积最大的行星是？",
    "option_a": "地球",
    "option_b": "木星",
@@ -731,6 +797,7 @@ window.QUIZ_DATA = {
   {
    "id": 67,
    "level": 14,
+   "category": "百科知识",
    "text": "“举头望明月，低头思故乡”的作者是？",
    "option_a": "李白",
    "option_b": "杜甫",
@@ -742,6 +809,7 @@ window.QUIZ_DATA = {
   {
    "id": 68,
    "level": 14,
+   "category": "百科知识",
    "text": "昼夜交替现象的成因是？",
    "option_a": "地球自转",
    "option_b": "地球公转",
@@ -753,6 +821,7 @@ window.QUIZ_DATA = {
   {
    "id": 69,
    "level": 14,
+   "category": "百科知识",
    "text": "人体面积最大的器官是？",
    "option_a": "心脏",
    "option_b": "皮肤",
@@ -764,6 +833,7 @@ window.QUIZ_DATA = {
   {
    "id": 70,
    "level": 14,
+   "category": "百科知识",
    "text": "下列属于可再生能源的是？",
    "option_a": "太阳能",
    "option_b": "煤炭",
@@ -775,6 +845,7 @@ window.QUIZ_DATA = {
   {
    "id": 71,
    "level": 15,
+   "category": "百科知识",
    "text": "黄河最终流入的海域是？",
    "option_a": "渤海",
    "option_b": "东海",
@@ -786,6 +857,7 @@ window.QUIZ_DATA = {
   {
    "id": 72,
    "level": 15,
+   "category": "百科知识",
    "text": "蜻蜓点水的目的是？",
    "option_a": "喝水",
    "option_b": "产卵",
@@ -797,6 +869,7 @@ window.QUIZ_DATA = {
   {
    "id": 73,
    "level": 15,
+   "category": "百科知识",
    "text": "直角的度数是？",
    "option_a": "90°",
    "option_b": "180°",
@@ -808,6 +881,7 @@ window.QUIZ_DATA = {
   {
    "id": 74,
    "level": 15,
+   "category": "百科知识",
    "text": "大熊猫的主要食物是？",
    "option_a": "青草",
    "option_b": "竹子",
@@ -819,6 +893,7 @@ window.QUIZ_DATA = {
   {
    "id": 75,
    "level": 15,
+   "category": "百科知识",
    "text": "北半球白昼最长的节气是？",
    "option_a": "夏至",
    "option_b": "冬至",
@@ -830,6 +905,7 @@ window.QUIZ_DATA = {
   {
    "id": 76,
    "level": 16,
+   "category": "百科知识",
    "text": "传说中创造汉字的人物是？",
    "option_a": "仓颉",
    "option_b": "炎帝",
@@ -841,6 +917,7 @@ window.QUIZ_DATA = {
   {
    "id": 77,
    "level": 16,
+   "category": "百科知识",
    "text": "植物光合作用需要的气体是？",
    "option_a": "二氧化碳",
    "option_b": "氧气",
@@ -852,6 +929,7 @@ window.QUIZ_DATA = {
   {
    "id": 78,
    "level": 16,
+   "category": "百科知识",
    "text": "企鹅的主要栖息地是？",
    "option_a": "北极",
    "option_b": "南极",
@@ -863,6 +941,7 @@ window.QUIZ_DATA = {
   {
    "id": 79,
    "level": 16,
+   "category": "百科知识",
    "text": "“三人行，必有我师焉”出自？",
    "option_a": "《论语》",
    "option_b": "《孟子》",
@@ -874,6 +953,7 @@ window.QUIZ_DATA = {
   {
    "id": 80,
    "level": 16,
+   "category": "百科知识",
    "text": "我们先看到闪电后听到雷声，是因为？",
    "option_a": "光速大于声速",
    "option_b": "闪电更近",
@@ -885,6 +965,7 @@ window.QUIZ_DATA = {
   {
    "id": 81,
    "level": 17,
+   "category": "百科知识",
    "text": "下列属于农业益虫的是？",
    "option_a": "七星瓢虫",
    "option_b": "蝗虫",
@@ -896,6 +977,7 @@ window.QUIZ_DATA = {
   {
    "id": 82,
    "level": 17,
+   "category": "百科知识",
    "text": "我国的首都是？",
    "option_a": "上海",
    "option_b": "北京",
@@ -907,6 +989,7 @@ window.QUIZ_DATA = {
   {
    "id": 83,
    "level": 17,
+   "category": "百科知识",
    "text": "彩虹一共有几种基础颜色？",
    "option_a": "5种",
    "option_b": "7种",
@@ -918,6 +1001,7 @@ window.QUIZ_DATA = {
   {
    "id": 84,
    "level": 17,
+   "category": "百科知识",
    "text": "水的化学式是？",
    "option_a": "H₂O",
    "option_b": "CO₂",
@@ -929,6 +1013,7 @@ window.QUIZ_DATA = {
   {
    "id": 85,
    "level": 17,
+   "category": "百科知识",
    "text": "月亮是什么天体？",
    "option_a": "恒星",
    "option_b": "行星",
@@ -940,6 +1025,7 @@ window.QUIZ_DATA = {
   {
    "id": 86,
    "level": 18,
+   "category": "百科知识",
    "text": "一年有多少个节气？",
    "option_a": "12个",
    "option_b": "24个",
@@ -951,6 +1037,7 @@ window.QUIZ_DATA = {
   {
    "id": 87,
    "level": 18,
+   "category": "百科知识",
    "text": "人体最坚硬的部位是？",
    "option_a": "骨头",
    "option_b": "牙齿",
@@ -962,6 +1049,7 @@ window.QUIZ_DATA = {
   {
    "id": 88,
    "level": 18,
+   "category": "百科知识",
    "text": "西湖位于我国哪个城市？",
    "option_a": "苏州",
    "option_b": "杭州",
@@ -973,6 +1061,7 @@ window.QUIZ_DATA = {
   {
    "id": 89,
    "level": 18,
+   "category": "百科知识",
    "text": "萤火虫发光的主要目的是？",
    "option_a": "照明",
    "option_b": "求偶交流",
@@ -984,6 +1073,7 @@ window.QUIZ_DATA = {
   {
    "id": 90,
    "level": 18,
+   "category": "百科知识",
    "text": "植物进行呼吸作用的时间是？",
    "option_a": "白天",
    "option_b": "夜晚",
@@ -995,6 +1085,7 @@ window.QUIZ_DATA = {
   {
    "id": 91,
    "level": 19,
+   "category": "百科知识",
    "text": "体温计的常规量程是？",
    "option_a": "0-100℃",
    "option_b": "35-42℃",
@@ -1006,6 +1097,7 @@ window.QUIZ_DATA = {
   {
    "id": 92,
    "level": 19,
+   "category": "百科知识",
    "text": "铅笔芯的主要成分是？",
    "option_a": "铅",
    "option_b": "石墨",
@@ -1017,6 +1109,7 @@ window.QUIZ_DATA = {
   {
    "id": 93,
    "level": 19,
+   "category": "百科知识",
    "text": "我国最大的淡水湖是？",
    "option_a": "洞庭湖",
    "option_b": "鄱阳湖",
@@ -1028,6 +1121,7 @@ window.QUIZ_DATA = {
   {
    "id": 94,
    "level": 19,
+   "category": "百科知识",
    "text": "汽车刹车人前倾是因为？",
    "option_a": "惯性",
    "option_b": "重力",
@@ -1039,6 +1133,7 @@ window.QUIZ_DATA = {
   {
    "id": 95,
    "level": 19,
+   "category": "百科知识",
    "text": "下列属于绝缘体的是？",
    "option_a": "铜丝",
    "option_b": "塑料",
@@ -1050,6 +1145,7 @@ window.QUIZ_DATA = {
   {
    "id": 96,
    "level": 20,
+   "category": "百科知识",
    "text": "地球公转一周的时间是？",
    "option_a": "一天",
    "option_b": "一个月",
@@ -1061,6 +1157,7 @@ window.QUIZ_DATA = {
   {
    "id": 97,
    "level": 20,
+   "category": "百科知识",
    "text": "地球自转一周的时间是？",
    "option_a": "12小时",
    "option_b": "24小时",
@@ -1072,6 +1169,7 @@ window.QUIZ_DATA = {
   {
    "id": 98,
    "level": 20,
+   "category": "百科知识",
    "text": "仙人掌长刺的主要作用是？",
    "option_a": "美观",
    "option_b": "减少水分蒸发",
@@ -1083,6 +1181,7 @@ window.QUIZ_DATA = {
   {
    "id": 99,
    "level": 20,
+   "category": "百科知识",
    "text": "五星红旗红色象征？",
    "option_a": "光明",
    "option_b": "革命",
@@ -1094,6 +1193,7 @@ window.QUIZ_DATA = {
   {
    "id": 100,
    "level": 20,
+   "category": "百科知识",
    "text": "我国四大名著不包括？",
    "option_a": "《诗经》",
    "option_b": "《西游记》",
@@ -1105,6 +1205,7 @@ window.QUIZ_DATA = {
   {
    "id": 101,
    "level": 21,
+   "category": "百科知识",
    "text": "闰年全年天数是？",
    "option_a": "365天",
    "option_b": "366天",
@@ -1116,6 +1217,7 @@ window.QUIZ_DATA = {
   {
    "id": 102,
    "level": 21,
+   "category": "百科知识",
    "text": "声音在哪种介质中传播最快？",
    "option_a": "空气",
    "option_b": "水",
@@ -1127,6 +1229,7 @@ window.QUIZ_DATA = {
   {
    "id": 103,
    "level": 21,
+   "category": "百科知识",
    "text": "蚕结茧后会变成？",
    "option_a": "蝴蝶",
    "option_b": "蚕蛾",
@@ -1138,6 +1241,7 @@ window.QUIZ_DATA = {
   {
    "id": 104,
    "level": 21,
+   "category": "百科知识",
    "text": "我国最长的内陆河是？",
    "option_a": "塔里木河",
    "option_b": "黄河",
@@ -1149,6 +1253,7 @@ window.QUIZ_DATA = {
   {
    "id": 105,
    "level": 21,
+   "category": "百科知识",
    "text": "氧气的主要作用是？",
    "option_a": "呼吸燃烧",
    "option_b": "保温",
@@ -1160,6 +1265,7 @@ window.QUIZ_DATA = {
   {
    "id": 106,
    "level": 22,
+   "category": "百科知识",
    "text": "下列属于可再生资源的是？",
    "option_a": "石油",
    "option_b": "风能",
@@ -1171,6 +1277,7 @@ window.QUIZ_DATA = {
   {
    "id": 107,
    "level": 22,
+   "category": "百科知识",
    "text": "哺乳动物的典型特征是？",
    "option_a": "卵生",
    "option_b": "胎生哺乳",
@@ -1182,6 +1289,7 @@ window.QUIZ_DATA = {
   {
    "id": 108,
    "level": 22,
+   "category": "百科知识",
    "text": "秋天树叶变黄的原因是？",
    "option_a": "叶绿素减少",
    "option_b": "天气染色",
@@ -1193,6 +1301,7 @@ window.QUIZ_DATA = {
   {
    "id": 109,
    "level": 22,
+   "category": "百科知识",
    "text": "元宵节的传统习俗是？",
    "option_a": "赏月",
    "option_b": "猜灯谜",
@@ -1204,6 +1313,7 @@ window.QUIZ_DATA = {
   {
    "id": 110,
    "level": 22,
+   "category": "百科知识",
    "text": "重阳节的传统习俗是？",
    "option_a": "登高赏菊",
    "option_b": "吃粽子",
@@ -1215,6 +1325,7 @@ window.QUIZ_DATA = {
   {
    "id": 111,
    "level": 23,
+   "category": "百科知识",
    "text": "人体气体交换的主要场所是？",
    "option_a": "气管",
    "option_b": "肺",
@@ -1226,6 +1337,7 @@ window.QUIZ_DATA = {
   {
    "id": 112,
    "level": 23,
+   "category": "百科知识",
    "text": "我国的国球是？",
    "option_a": "篮球",
    "option_b": "乒乓球",
@@ -1237,6 +1349,7 @@ window.QUIZ_DATA = {
   {
    "id": 113,
    "level": 23,
+   "category": "百科知识",
    "text": "“谁知盘中餐，粒粒皆辛苦”作者是？",
    "option_a": "李白",
    "option_b": "李绅",
@@ -1248,6 +1361,7 @@ window.QUIZ_DATA = {
   {
    "id": 114,
    "level": 23,
+   "category": "百科知识",
    "text": "干冰的主要成分是？",
    "option_a": "固态水",
    "option_b": "固态二氧化碳",
@@ -1259,6 +1373,7 @@ window.QUIZ_DATA = {
   {
    "id": 115,
    "level": 23,
+   "category": "百科知识",
    "text": "莲藕孔洞的主要作用是？",
    "option_a": "储存空气",
    "option_b": "储存水分",
@@ -1270,6 +1385,7 @@ window.QUIZ_DATA = {
   {
    "id": 116,
    "level": 24,
+   "category": "百科知识",
    "text": "光年是什么单位？",
    "option_a": "时间单位",
    "option_b": "长度单位",
@@ -1281,6 +1397,7 @@ window.QUIZ_DATA = {
   {
    "id": 117,
    "level": 24,
+   "category": "百科知识",
    "text": "海水不能直接饮用的原因是？",
    "option_a": "含盐量高",
    "option_b": "有细菌",
@@ -1292,6 +1409,7 @@ window.QUIZ_DATA = {
   {
    "id": 118,
    "level": 24,
+   "category": "百科知识",
    "text": "我国古代用于导航的发明是？",
    "option_a": "火药",
    "option_b": "指南针",
@@ -1303,6 +1421,7 @@ window.QUIZ_DATA = {
   {
    "id": 119,
    "level": 24,
+   "category": "百科知识",
    "text": "绿色植物制造养料的主要器官是？",
    "option_a": "根",
    "option_b": "叶",
@@ -1314,6 +1433,7 @@ window.QUIZ_DATA = {
   {
    "id": 120,
    "level": 24,
+   "category": "百科知识",
    "text": "地球的天然卫星是？",
    "option_a": "太阳",
    "option_b": "月球",
@@ -1325,7 +1445,8 @@ window.QUIZ_DATA = {
   {
    "id": 121,
    "level": 25,
-   "text": "AI拥有和人类一样的自主思考能力",
+   "category": "AI知识",
+   "text": "AI拥有和人类一样的自主思考能力。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1336,7 +1457,8 @@ window.QUIZ_DATA = {
   {
    "id": 122,
    "level": 25,
-   "text": "智能人脸识别属于人工智能应用",
+   "category": "AI知识",
+   "text": "智能人脸识别属于人工智能应用。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1347,7 +1469,8 @@ window.QUIZ_DATA = {
   {
    "id": 123,
    "level": 25,
-   "text": "可以向AI发送家庭住址、手机号等隐私信息",
+   "category": "AI知识",
+   "text": "可以向AI发送家庭住址、手机号等隐私信息。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1358,7 +1481,8 @@ window.QUIZ_DATA = {
   {
    "id": 124,
    "level": 25,
-   "text": "AI生成的内容需要人工甄别对错，不能全盘相信",
+   "category": "AI知识",
+   "text": "AI生成的内容需要人工甄别对错，不能全盘相信。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1369,7 +1493,8 @@ window.QUIZ_DATA = {
   {
    "id": 125,
    "level": 25,
-   "text": "细化提示词，能让AI输出的内容更贴合需求",
+   "category": "AI知识",
+   "text": "细化提示词，能让AI输出的内容更贴合需求。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1380,7 +1505,8 @@ window.QUIZ_DATA = {
   {
    "id": 126,
    "level": 26,
-   "text": "AI具备真实的喜怒哀乐等情绪",
+   "category": "AI知识",
+   "text": "AI具备真实的喜怒哀乐等情绪。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1391,7 +1517,8 @@ window.QUIZ_DATA = {
   {
    "id": 127,
    "level": 26,
-   "text": "考试时借助AI答题属于作弊行为",
+   "category": "AI知识",
+   "text": "考试时借助AI答题属于作弊行为。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1402,7 +1529,8 @@ window.QUIZ_DATA = {
   {
    "id": 128,
    "level": 26,
-   "text": "AI可以辅助我们构思作文、整理学习资料",
+   "category": "AI知识",
+   "text": "AI可以辅助我们构思作文、整理学习资料。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1413,7 +1541,8 @@ window.QUIZ_DATA = {
   {
    "id": 129,
    "level": 26,
-   "text": "AI可以凭空制造出真实的实物物品",
+   "category": "AI知识",
+   "text": "AI可以凭空制造出真实的实物物品。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1424,7 +1553,8 @@ window.QUIZ_DATA = {
   {
    "id": 130,
    "level": 26,
-   "text": "短视频智能推荐、导航规划路线都用到了AI技术",
+   "category": "AI知识",
+   "text": "短视频智能推荐、导航规划路线都用到了AI技术。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1435,7 +1565,8 @@ window.QUIZ_DATA = {
   {
    "id": 131,
    "level": 27,
-   "text": "手写作业、手绘图画属于AI创作内容",
+   "category": "AI知识",
+   "text": "手写作业、手绘图画属于AI创作内容。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1446,7 +1577,8 @@ window.QUIZ_DATA = {
   {
    "id": 132,
    "level": 27,
-   "text": "不可以利用AI冒充家长和老师沟通",
+   "category": "AI知识",
+   "text": "不可以利用AI冒充家长和老师沟通。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1457,7 +1589,8 @@ window.QUIZ_DATA = {
   {
    "id": 133,
    "level": 27,
-   "text": "AI的知识是自主学习、凭空创造出来的",
+   "category": "AI知识",
+   "text": "AI的知识是自主学习、凭空创造出来的。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1468,7 +1601,8 @@ window.QUIZ_DATA = {
   {
    "id": 134,
    "level": 27,
-   "text": "AI换脸、伪造视频容易误导他人，属于不良使用行为",
+   "category": "AI知识",
+   "text": "AI换脸、伪造视频容易误导他人，属于不良使用行为。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1479,7 +1613,8 @@ window.QUIZ_DATA = {
   {
    "id": 135,
    "level": 27,
-   "text": "小学生使用AI的正确方式是辅助学习、独立思考",
+   "category": "AI知识",
+   "text": "小学生使用AI的正确方式是辅助学习、独立思考。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1490,7 +1625,8 @@ window.QUIZ_DATA = {
   {
    "id": 136,
    "level": 28,
-   "text": "AI可以完全替代人类的课堂学习和动手实践",
+   "category": "AI知识",
+   "text": "AI可以完全替代人类的课堂学习和动手实践。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1501,7 +1637,8 @@ window.QUIZ_DATA = {
   {
    "id": 137,
    "level": 28,
-   "text": "智能音箱、扫地机器人都属于AI智能产品",
+   "category": "AI知识",
+   "text": "智能音箱、扫地机器人都属于AI智能产品。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1512,7 +1649,8 @@ window.QUIZ_DATA = {
   {
    "id": 138,
    "level": 28,
-   "text": "AI翻译可以替代英语学习，不用背诵单词",
+   "category": "AI知识",
+   "text": "AI翻译可以替代英语学习，不用背诵单词。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1523,7 +1661,8 @@ window.QUIZ_DATA = {
   {
    "id": 139,
    "level": 28,
-   "text": "AI出现回答错误时，需要我们查阅资料核实修正",
+   "category": "AI知识",
+   "text": "AI出现回答错误时，需要我们查阅资料核实修正。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1534,7 +1673,8 @@ window.QUIZ_DATA = {
   {
    "id": 140,
    "level": 28,
-   "text": "文明提问、清晰描述问题是使用AI的基本礼仪",
+   "category": "AI知识",
+   "text": "文明提问、清晰描述问题是使用AI的基本礼仪。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1545,7 +1685,8 @@ window.QUIZ_DATA = {
   {
    "id": 141,
    "level": 29,
-   "text": "AI可以生成虚假信息，这种现象被称为AI幻觉",
+   "category": "AI知识",
+   "text": "AI可以生成虚假信息，这种现象被称为AI幻觉。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1556,7 +1697,8 @@ window.QUIZ_DATA = {
   {
    "id": 142,
    "level": 29,
-   "text": "嘈杂环境不会影响AI语音识别的准确率",
+   "category": "AI知识",
+   "text": "嘈杂环境不会影响AI语音识别的准确率。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1567,7 +1709,8 @@ window.QUIZ_DATA = {
   {
    "id": 143,
    "level": 29,
-   "text": "可以借鉴AI作文思路，自主修改后完成作业",
+   "category": "AI知识",
+   "text": "可以借鉴AI作文思路，自主修改后完成作业。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1578,7 +1721,8 @@ window.QUIZ_DATA = {
   {
    "id": 144,
    "level": 29,
-   "text": "AI有自主意识，可以独立判断是非对错",
+   "category": "AI知识",
+   "text": "AI有自主意识，可以独立判断是非对错。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1589,7 +1733,8 @@ window.QUIZ_DATA = {
   {
    "id": 145,
    "level": 29,
-   "text": "利用AI制作虚假证件、截图是违规行为",
+   "category": "AI知识",
+   "text": "利用AI制作虚假证件、截图是违规行为。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1600,7 +1745,8 @@ window.QUIZ_DATA = {
   {
    "id": 146,
    "level": 30,
-   "text": "AI智能练字可以辅助纠正字形，但不能替代手动练习",
+   "category": "AI知识",
+   "text": "AI智能练字可以辅助纠正字形，但不能替代手动练习。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1611,7 +1757,8 @@ window.QUIZ_DATA = {
   {
    "id": 147,
    "level": 30,
-   "text": "所有AI生成的内容都可以随意商用、转发",
+   "category": "AI知识",
+   "text": "所有AI生成的内容都可以随意商用、转发。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1622,7 +1769,8 @@ window.QUIZ_DATA = {
   {
    "id": 148,
    "level": 30,
-   "text": "AI可以帮助我们梳理知识框架、制作思维导图",
+   "category": "AI知识",
+   "text": "AI可以帮助我们梳理知识框架、制作思维导图。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1633,7 +1781,8 @@ window.QUIZ_DATA = {
   {
    "id": 149,
    "level": 30,
-   "text": "过度依赖AI会导致独立思考能力下降",
+   "category": "AI知识",
+   "text": "过度依赖AI会导致独立思考能力下降。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1644,7 +1793,8 @@ window.QUIZ_DATA = {
   {
    "id": 150,
    "level": 30,
-   "text": "AI可以听懂所有动物语言和无声手势",
+   "category": "AI知识",
+   "text": "AI可以听懂所有动物语言和无声手势。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1655,7 +1805,8 @@ window.QUIZ_DATA = {
   {
    "id": 151,
    "level": 31,
-   "text": "生成式AI可以根据文字创作图画、文章、诗歌",
+   "category": "AI知识",
+   "text": "生成式AI可以根据文字创作图画、文章、诗歌。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1666,7 +1817,8 @@ window.QUIZ_DATA = {
   {
    "id": 152,
    "level": 31,
-   "text": "AI对话记录绝对不会被留存，可以随意发言",
+   "category": "AI知识",
+   "text": "AI对话记录绝对不会被留存，可以随意发言。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1677,7 +1829,8 @@ window.QUIZ_DATA = {
   {
    "id": 153,
    "level": 31,
-   "text": "合理使用AI可以拓宽知识面，提升学习效率",
+   "category": "AI知识",
+   "text": "合理使用AI可以拓宽知识面，提升学习效率。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1688,7 +1841,8 @@ window.QUIZ_DATA = {
   {
    "id": 154,
    "level": 31,
-   "text": "AI可以预判人类未知的全新知识和想法",
+   "category": "AI知识",
+   "text": "AI可以预判人类未知的全新知识和想法。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1699,7 +1853,8 @@ window.QUIZ_DATA = {
   {
    "id": 155,
    "level": 31,
-   "text": "识别垃圾分类、违章车辆都用到AI图像识别技术",
+   "category": "AI知识",
+   "text": "识别垃圾分类、违章车辆都用到AI图像识别技术。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1710,7 +1865,8 @@ window.QUIZ_DATA = {
   {
    "id": 156,
    "level": 32,
-   "text": "AI辅助学习的核心是偷懒省事、应付作业",
+   "category": "AI知识",
+   "text": "AI辅助学习的核心是偷懒省事、应付作业。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1721,7 +1877,8 @@ window.QUIZ_DATA = {
   {
    "id": 157,
    "level": 32,
-   "text": "AI没有真实的生活体验和情感共情能力",
+   "category": "AI知识",
+   "text": "AI没有真实的生活体验和情感共情能力。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1732,7 +1889,8 @@ window.QUIZ_DATA = {
   {
    "id": 158,
    "level": 32,
-   "text": "可以让AI生成暴力、造谣、低俗的不良内容",
+   "category": "AI知识",
+   "text": "可以让AI生成暴力、造谣、低俗的不良内容。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1743,7 +1901,8 @@ window.QUIZ_DATA = {
   {
    "id": 159,
    "level": 32,
-   "text": "AI是人类编写的程序，发展主导者是人类",
+   "category": "AI知识",
+   "text": "AI是人类编写的程序，发展主导者是人类。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1754,7 +1913,8 @@ window.QUIZ_DATA = {
   {
    "id": 160,
    "level": 32,
-   "text": "小学生使用AI的底线是诚信、文明、守法",
+   "category": "AI知识",
+   "text": "小学生使用AI的底线是诚信、文明、守法。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1765,7 +1925,8 @@ window.QUIZ_DATA = {
   {
    "id": 161,
    "level": 33,
-   "text": "地球自转形成了昼夜交替现象",
+   "category": "百科知识",
+   "text": "地球自转形成了昼夜交替现象。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1776,7 +1937,8 @@ window.QUIZ_DATA = {
   {
    "id": 162,
    "level": 33,
-   "text": "鲸鱼是鱼类，不是哺乳动物",
+   "category": "百科知识",
+   "text": "鲸鱼是鱼类，不是哺乳动物。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1787,7 +1949,8 @@ window.QUIZ_DATA = {
   {
    "id": 163,
    "level": 33,
-   "text": "标准大气压下，水的沸点是100℃",
+   "category": "百科知识",
+   "text": "标准大气压下，水的沸点是100℃。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1798,7 +1961,8 @@ window.QUIZ_DATA = {
   {
    "id": 164,
    "level": 33,
-   "text": "企鹅生活在北极，北极熊生活在南极",
+   "category": "百科知识",
+   "text": "企鹅生活在北极，北极熊生活在南极。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1809,7 +1973,8 @@ window.QUIZ_DATA = {
   {
    "id": 165,
    "level": 33,
-   "text": "植物光合作用可以吸收二氧化碳，释放氧气",
+   "category": "百科知识",
+   "text": "植物光合作用可以吸收二氧化碳，释放氧气。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1820,7 +1985,8 @@ window.QUIZ_DATA = {
   {
    "id": 166,
    "level": 34,
-   "text": "光速传播速度比声速快",
+   "category": "百科知识",
+   "text": "光速传播速度比声速快。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1831,7 +1997,8 @@ window.QUIZ_DATA = {
   {
    "id": 167,
    "level": 34,
-   "text": "大熊猫是食肉目动物，主食是竹子",
+   "category": "百科知识",
+   "text": "大熊猫是食肉目动物，主食是竹子。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1842,7 +2009,8 @@ window.QUIZ_DATA = {
   {
    "id": 168,
    "level": 34,
-   "text": "黄河是我国第一长河",
+   "category": "百科知识",
+   "text": "黄河是我国第一长河。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1853,7 +2021,8 @@ window.QUIZ_DATA = {
   {
    "id": 169,
    "level": 34,
-   "text": "直角的度数是90度",
+   "category": "百科知识",
+   "text": "直角的度数是90度。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1864,7 +2033,8 @@ window.QUIZ_DATA = {
   {
    "id": 170,
    "level": 34,
-   "text": "月亮本身不会发光，只能反射太阳光",
+   "category": "百科知识",
+   "text": "月亮本身不会发光，只能反射太阳光。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1875,7 +2045,8 @@ window.QUIZ_DATA = {
   {
    "id": 171,
    "level": 35,
-   "text": "一年有24个节气",
+   "category": "百科知识",
+   "text": "一年有24个节气。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1886,7 +2057,8 @@ window.QUIZ_DATA = {
   {
    "id": 172,
    "level": 35,
-   "text": "人体最大的消化腺是胃",
+   "category": "百科知识",
+   "text": "人体最大的消化腺是胃。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1897,7 +2069,8 @@ window.QUIZ_DATA = {
   {
    "id": 173,
    "level": 35,
-   "text": "太阳能、风能都属于可再生能源",
+   "category": "百科知识",
+   "text": "太阳能、风能都属于可再生能源。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1908,7 +2081,8 @@ window.QUIZ_DATA = {
   {
    "id": 174,
    "level": 35,
-   "text": "蜻蜓点水是为了喝水",
+   "category": "百科知识",
+   "text": "蜻蜓点水是为了喝水。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1919,7 +2093,8 @@ window.QUIZ_DATA = {
   {
    "id": 175,
    "level": 35,
-   "text": "所有鸟类都有羽毛",
+   "category": "百科知识",
+   "text": "所有鸟类都有羽毛。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1930,7 +2105,8 @@ window.QUIZ_DATA = {
   {
    "id": 176,
    "level": 36,
-   "text": "木星是太阳系体积最大的行星",
+   "category": "百科知识",
+   "text": "木星是太阳系体积最大的行星。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1941,7 +2117,8 @@ window.QUIZ_DATA = {
   {
    "id": 177,
    "level": 36,
-   "text": "“三人行，必有我师焉”出自《论语》",
+   "category": "百科知识",
+   "text": "“三人行，必有我师焉”出自《论语》。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1952,7 +2129,8 @@ window.QUIZ_DATA = {
   {
    "id": 178,
    "level": 36,
-   "text": "皮肤是人体面积最大的器官",
+   "category": "百科知识",
+   "text": "皮肤是人体面积最大的器官。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1963,7 +2141,8 @@ window.QUIZ_DATA = {
   {
    "id": 179,
    "level": 36,
-   "text": "立夏是夏季的第一个节气",
+   "category": "百科知识",
+   "text": "立夏是夏季的第一个节气。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1974,7 +2153,8 @@ window.QUIZ_DATA = {
   {
    "id": 180,
    "level": 36,
-   "text": "蝗虫是农业益虫，能保护庄稼",
+   "category": "百科知识",
+   "text": "蝗虫是农业益虫，能保护庄稼。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1985,7 +2165,8 @@ window.QUIZ_DATA = {
   {
    "id": 181,
    "level": 37,
-   "text": "海水含盐量高，不能直接饮用",
+   "category": "百科知识",
+   "text": "海水含盐量高，不能直接饮用。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -1996,7 +2177,8 @@ window.QUIZ_DATA = {
   {
    "id": 182,
    "level": 37,
-   "text": "指南针静止时一端指向地理北极",
+   "category": "百科知识",
+   "text": "指南针静止时一端指向地理北极。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2007,7 +2189,8 @@ window.QUIZ_DATA = {
   {
    "id": 183,
    "level": 37,
-   "text": "莲藕的孔洞是为了储存水分",
+   "category": "百科知识",
+   "text": "莲藕的孔洞是为了储存水分。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2018,7 +2201,8 @@ window.QUIZ_DATA = {
   {
    "id": 184,
    "level": 37,
-   "text": "小狗夏天吐舌头是为了散热降温",
+   "category": "百科知识",
+   "text": "小狗夏天吐舌头是为了散热降温。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2029,7 +2213,8 @@ window.QUIZ_DATA = {
   {
    "id": 185,
    "level": 37,
-   "text": "光年是计算时间的单位",
+   "category": "百科知识",
+   "text": "光年是计算时间的单位。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2040,7 +2225,8 @@ window.QUIZ_DATA = {
   {
    "id": 186,
    "level": 38,
-   "text": "我国国花是牡丹",
+   "category": "百科知识",
+   "text": "我国国花是牡丹。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2051,7 +2237,8 @@ window.QUIZ_DATA = {
   {
    "id": 187,
    "level": 38,
-   "text": "铅笔芯含有大量金属铅",
+   "category": "百科知识",
+   "text": "铅笔芯含有大量金属铅。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2062,7 +2249,8 @@ window.QUIZ_DATA = {
   {
    "id": 188,
    "level": 38,
-   "text": "平面镜成像是正立等大的虚像",
+   "category": "百科知识",
+   "text": "平面镜成像是正立等大的虚像。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2073,7 +2261,8 @@ window.QUIZ_DATA = {
   {
    "id": 189,
    "level": 38,
-   "text": "闰年有366天，平年有365天",
+   "category": "百科知识",
+   "text": "闰年有366天，平年有365天。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2084,7 +2273,8 @@ window.QUIZ_DATA = {
   {
    "id": 190,
    "level": 38,
-   "text": "声音可以在真空中传播",
+   "category": "百科知识",
+   "text": "声音可以在真空中传播。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2095,7 +2285,8 @@ window.QUIZ_DATA = {
   {
    "id": 191,
    "level": 39,
-   "text": "水稻、小麦属于粮食作物",
+   "category": "百科知识",
+   "text": "水稻、小麦属于粮食作物。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2106,7 +2297,8 @@ window.QUIZ_DATA = {
   {
    "id": 192,
    "level": 39,
-   "text": "地球公转形成四季变化",
+   "category": "百科知识",
+   "text": "地球公转形成四季变化。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2117,7 +2309,8 @@ window.QUIZ_DATA = {
   {
    "id": 193,
    "level": 39,
-   "text": "清明节既是节气也是传统节日",
+   "category": "百科知识",
+   "text": "清明节既是节气也是传统节日。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2128,7 +2321,8 @@ window.QUIZ_DATA = {
   {
    "id": 194,
    "level": 39,
-   "text": "人体呼吸气体交换的场所是鼻腔",
+   "category": "百科知识",
+   "text": "人体呼吸气体交换的场所是鼻腔。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2139,7 +2333,8 @@ window.QUIZ_DATA = {
   {
    "id": 195,
    "level": 39,
-   "text": "乒乓球是我国的国球",
+   "category": "百科知识",
+   "text": "乒乓球是我国的国球。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2150,7 +2345,8 @@ window.QUIZ_DATA = {
   {
    "id": 196,
    "level": 40,
-   "text": "干冰是固态的水",
+   "category": "百科知识",
+   "text": "干冰是固态的水。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2161,7 +2357,8 @@ window.QUIZ_DATA = {
   {
    "id": 197,
    "level": 40,
-   "text": "惯性可以让运动的物体保持运动状态",
+   "category": "百科知识",
+   "text": "惯性可以让运动的物体保持运动状态。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2172,7 +2369,8 @@ window.QUIZ_DATA = {
   {
    "id": 198,
    "level": 40,
-   "text": "塑料、橡胶都是绝缘体",
+   "category": "百科知识",
+   "text": "塑料、橡胶都是绝缘体。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2183,7 +2381,8 @@ window.QUIZ_DATA = {
   {
    "id": 199,
    "level": 40,
-   "text": "我国最大的城市是上海",
+   "category": "百科知识",
+   "text": "我国最大的城市是上海。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
@@ -2194,7 +2393,8 @@ window.QUIZ_DATA = {
   {
    "id": 200,
    "level": 40,
-   "text": "植物只在白天进行光合作用",
+   "category": "百科知识",
+   "text": "植物只在白天进行光合作用。",
    "option_a": "正确",
    "option_b": "错误",
    "option_c": "",
