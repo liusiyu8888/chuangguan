@@ -1,39 +1,48 @@
-"""百科知识大闯关 - FastAPI 入口。
+"""百科知识大闯关 - 纯静态版预览入口
 
-本项目同时提供两套产物：
-1. 网页版（FastAPI + HTMX + 数据库）：路由在 app/routers/game.py
-2. 纯静态版（static-site/，可发布到 GitHub Pages / AtomGit Pages）：
-   通过 /static-site 挂载，GET / 默认返回静态首页
+static-site/ 是纯静态项目（零后端、零依赖），可直接发布到
+GitHub Pages / AtomGit Pages 等任意静态托管。
+
+本文件仅作为 AtomCode 沙箱的预览服务：把 static-site/ 目录
+以静态文件方式挂载，让沙箱 iframe 能直接预览。
 """
-from contextlib import asynccontextmanager
-from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+import os
 
-from app.db import init_db
-from app.routers.game import router as game_router
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_SITE_DIR = os.path.join(BASE_DIR, "..", "static-site")
 
-STATIC_DIR = Path(__file__).resolve().parent / "static"
-STATIC_SITE_DIR = Path(__file__).resolve().parent.parent / "static-site"
+app = FastAPI(title="百科知识大闯关（纯静态版）")
+
+# 挂载 static-site 下的 css / js 等静态资源
+app.mount(
+    "/css",
+    StaticFiles(directory=os.path.join(STATIC_SITE_DIR, "css")),
+    name="css",
+)
+app.mount(
+    "/js",
+    StaticFiles(directory=os.path.join(STATIC_SITE_DIR, "js")),
+    name="js",
+)
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    init_db()
-    yield
+@app.get("/")
+async def index() -> FileResponse:
+    """首页：直接返回 static-site/index.html"""
+    return FileResponse(os.path.join(STATIC_SITE_DIR, "index.html"))
 
 
-app = FastAPI(title="百科知识大闯关", lifespan=lifespan)
-app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
-app.include_router(game_router)
+@app.get("/game.html")
+async def game() -> FileResponse:
+    """闯关页"""
+    return FileResponse(os.path.join(STATIC_SITE_DIR, "game.html"))
 
-# 纯静态版挂载（可发布到任意静态托管）
-if STATIC_SITE_DIR.exists():
-    app.mount("/static-site", StaticFiles(directory=str(STATIC_SITE_DIR)), name="static-site")
 
-    @app.get("/", include_in_schema=False)
-    async def static_home():
-        """默认首页：返回纯静态版首页。"""
-        return FileResponse(str(STATIC_SITE_DIR / "index.html"))
+@app.get("/study.html")
+async def study() -> FileResponse:
+    """学习模式页"""
+    return FileResponse(os.path.join(STATIC_SITE_DIR, "study.html"))

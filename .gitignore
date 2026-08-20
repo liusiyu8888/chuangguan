@@ -7,33 +7,4 @@ __pycache__/
 .atomcode/*
 !.atomcode/conversations.json
 !.atomcode/skill-profile.json
-
-# 虚拟环境（路径过长会导致 git 同步失败）
 .venv/
-
-# 调试临时文件与脚本
-_check.py
-_dbg*.py
-_dbg*.txt
-_debug*.py
-_docx_*.py
-_docx_*.txt
-_extract_docx.py
-_gen_builtin.py
-_play_out.html
-_verify_*.py
-_verify_*.txt
-_wrapper_out.txt
-_*.txt
-_*.py
-basetest.txt
-smoke_out.txt
-tools_*.py
-*_out.txt
-*_out.html
-
-# 打包产物
-*.tar.gz
-*.atomapp
-manifest.json
-doc_paras.json
