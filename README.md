@@ -14,7 +14,7 @@
 ## 目录结构
 
 ```
-static-site/            # 纯静态项目（发布内容）
+docs/                   # 纯静态项目（发布内容，GitHub Pages 部署目录选 /docs）
 ├── index.html          # 首页：开始闯关 / 学习模式 / 关卡地图 / 进度统计 / 重置
 ├── game.html           # 闯关页：40 关 × 5 题
 ├── study.html          # 学习模式
@@ -30,7 +30,7 @@ app/main.py             # 仅沙箱预览用（静态文件服务），非发布
 
 ## 运行方式
 
-**纯静态（发布 / 本地双击）**：直接打开 `static-site/index.html` 即可，无需任何服务器。
+**纯静态（发布 / 本地双击）**：直接打开 `docs/index.html` 即可，无需任何服务器。
 
 **沙箱预览（FastAPI 静态服务）**：
 
@@ -45,9 +45,9 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 | 平台 | 方式 |
 |---|---|
-| GitHub Pages | 推送 `static-site/` → 仓库 Settings → Pages → Source 选分支 + 目录 → Save |
-| AtomGit Pages | 推送后仓库「服务 / Pages」选择部署目录 `static-site/` 并启用 |
-| 其它（Vercel / Netlify / Gitee Pages） | 上传或关联 `static-site/` 目录即可 |
+| GitHub Pages | 推送 `docs/` → 仓库 Settings → Pages → Source 选分支 + 目录选 `/docs` → Save |
+| AtomGit Pages | 推送后仓库「服务 / Pages」选择部署目录 `docs/` 并启用 |
+| 其它（Vercel / Netlify / Gitee Pages） | 上传或关联 `docs/` 目录即可 |
 
 发布后即可获得外网链接（如 `https://<用户名>.atomgit.com/<仓库名>/`）。
 
