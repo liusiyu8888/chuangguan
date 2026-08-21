@@ -3,12 +3,13 @@
 static-site/ 是纯静态项目（零后端、零依赖），可直接发布到
 GitHub Pages / AtomGit Pages 等任意静态托管。
 
-本文件仅作为 AtomCode 沙箱的预览服务：把 static-site/ 目录
-以静态文件方式挂载，让沙箱 iframe 能直接预览。
+本文件仅作为 AtomCode 沙箱的预览服务：把 static-site/ 目录整体
+以静态文件方式挂载（html=True 自动处理 index.html），让沙箱
+iframe 能直接预览，且页面间的相对链接（index.html / game.html /
+study.html / css/ / js/）全部可用。
 """
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 import os
 
@@ -17,32 +18,10 @@ STATIC_SITE_DIR = os.path.join(BASE_DIR, "..", "static-site")
 
 app = FastAPI(title="百科知识大闯关（纯静态版）")
 
-# 挂载 static-site 下的 css / js 等静态资源
+# 整体挂载 static-site 目录：/ → index.html，/game.html、/study.html、
+# /css/、/js/ 等全部按文件自动路由，页面内相对链接均可正常访问。
 app.mount(
-    "/css",
-    StaticFiles(directory=os.path.join(STATIC_SITE_DIR, "css")),
-    name="css",
+    "/",
+    StaticFiles(directory=STATIC_SITE_DIR, html=True),
+    name="static-site",
 )
-app.mount(
-    "/js",
-    StaticFiles(directory=os.path.join(STATIC_SITE_DIR, "js")),
-    name="js",
-)
-
-
-@app.get("/")
-async def index() -> FileResponse:
-    """首页：直接返回 static-site/index.html"""
-    return FileResponse(os.path.join(STATIC_SITE_DIR, "index.html"))
-
-
-@app.get("/game.html")
-async def game() -> FileResponse:
-    """闯关页"""
-    return FileResponse(os.path.join(STATIC_SITE_DIR, "game.html"))
-
-
-@app.get("/study.html")
-async def study() -> FileResponse:
-    """学习模式页"""
-    return FileResponse(os.path.join(STATIC_SITE_DIR, "study.html"))
